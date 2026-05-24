@@ -1,19 +1,17 @@
 ---
 import type { CollectionEntry } from 'astro:content'
 import { getMonthName } from '$/utils'
-
 interface Props {
     post: CollectionEntry<'blog'>,
     asCard?: boolean
 }
-
 const { post: { data: post, slug }, asCard = false } = Astro.props
 ---
 <div class={`post-preview ${asCard && 'post-preview--card'}`}>
     <div class="post-preview__date-box">
         <div class="post-preview__date">
-            <span class="post-preview__date__day">{ new Date(post.date).getDate() }</span>
-            <span class="post-preview__date__month-n-year">{ `${getMonthName(post.date)} ${new Date(post.date).getFullYear()}` }</span>
+            <span class="post-preview__date__day">{ new Date(post.pubDate).getDate() }</span>
+            <span class="post-preview__date__month-n-year">{ `${getMonthName(post.pubDate)} ${new Date(post.pubDate).getFullYear()}` }</span>
         </div>
     </div>
     <div class="flex-1">
@@ -54,7 +52,7 @@ const { post: { data: post, slug }, asCard = false } = Astro.props
         @apply text-gray-400;
     }
     .post-preview__title {
-        @apply text-2xl font-semibold text-theme-primary dark:text-theme-dark-primary /* this doesn't works here */ hover:underline mb-2;
+        @apply text-2xl font-semibold text-theme-primary dark:text-theme-dark-primary hover:underline mb-2;
     }
     .post-preview__desc {
         @apply text-lg leading-6 line-clamp-2 dark:text-white hyphens-auto;
