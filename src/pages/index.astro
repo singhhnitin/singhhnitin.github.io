@@ -1,28 +1,29 @@
 ---
 export const prerender = true
-
-import { getCollection, getEntryBySlug } from 'astro:content'
+import { getCollection } from 'astro:content'
 import DefaultPageLayout from '$/layouts/default.astro'
 import PostPreviewList from '$/components/PostPreviewList.astro'
 import Prose from '$/components/Prose.astro'
-import { Content as AboutAstroInk } from './_astro-ink.md'
-
-
 const title = 'Home'
-const description = 'Astro-Ink is a crisp, minimal, personal blog theme for Astro'
-
+const description = 'GSoC 2026 contributor at DBpedia Hindi Chapter'
 const posts = await getCollection('blog')
 ---
 <DefaultPageLayout content={{ title, description }} showPageHeader={false}>
-    <div class="hero ">
-        <div class="hero__face">
-            <div class="author-card">
-                <img src="https://assets.website-files.com/5e51c674258ffe10d286d30a/5e5358878e2493fbea064dd9_peep-59.svg" title="Aalam" />
-            </div>
-        </div>
+    <div class="hero">
         <div class="hero__says">
             <Prose>
-                <AboutAstroInk/>
+                <h2>Hey, I'm Nitin 👋</h2>
+                <p>
+                    I'm a third year CS student from Mau, Uttar Pradesh, currently contributing to 
+                    <strong>DBpedia</strong> as a GSoC 2026 developer. I write here about what I'm 
+                    building, breaking, and learning along the way — mostly Hindi NLP, knowledge graphs, 
+                    and open source.
+                </p>
+                <p>
+                    This summer I'm working on fine-tuning small language models for Hindi relational 
+                    triple extraction and building a human-in-the-loop feedback interface for the 
+                    DBpedia Hindi Chapter.
+                </p>
             </Prose>
         </div>
     </div>
@@ -32,22 +33,12 @@ const posts = await getCollection('blog')
         <a class="action__go-to-blog ink-h" href="/blog" title="All Posts">All Posts &rarr;</a>
     </div>
 </DefaultPageLayout>
-
 <style>
     .hero {
-        @apply flex flex-col md:flex-row gap-8 w-full transition-all pb-4
-    }
-    .hero__face {
-        @apply flex md:flex-none justify-center
+        @apply flex flex-col gap-8 w-full transition-all pb-4
     }
     .hero__says {
         @apply flex-1 text-center md:text-left
-    }
-    .author-card {
-        @apply  h-48 w-48 md:h-56 bg-theme-primary dark:bg-theme-dark-primary rounded-full md:rounded-md shadow-lg
-    }
-    .author-card img {
-        @apply rounded-full h-48 w-48 md:h-56
     }
     .page__actions {
         @apply flex justify-center md:justify-end py-6
