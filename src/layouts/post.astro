@@ -49,7 +49,7 @@ const AUTHOR_AVATAR = content.authorImage ? content.authorImage : SITE?.authorIm
                     {!AUTHOR_AVATAR ? ' | ' : ''}
                     <span class="post__date">
                         <!-- post creation/updation data -->
-                        { new Intl.DateTimeFormat('en-US', { dateStyle: 'full' }).format(new Date(content.date))}
+                       { new Intl.DateTimeFormat('en-US', { dateStyle: 'full' }).format(new Date(content.pubDate))}
                     </span>
                     <span class="post__stats">
                         { USE_VIEW_STATS && ` | `}
