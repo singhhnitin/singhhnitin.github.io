@@ -10,14 +10,19 @@ const posts = await getCollection('blog')
 ---
 <DefaultPageLayout content={{ title, description }} showPageHeader={false}>
     <div class="hero">
+        <div class="badges">
+            <img src="/gsoc.png" alt="Google Summer of Code" class="badge-logo" />
+            <span class="badge-x">×</span>
+            <img src="/dbpedia.png" alt="DBpedia" class="badge-logo" />
+        </div>
         <div class="hero__says">
             <Prose>
                 <h2>Hey, I'm Nitin 👋</h2>
                 <p>
                     I'm a third year CS student from Mau, Uttar Pradesh, currently contributing to 
-                    <strong>DBpedia</strong> as a GSoC 2026 developer. I write here about what I'm 
-                    building, breaking, and learning along the way — mostly Hindi NLP, knowledge graphs, 
-                    and open source.
+                    <strong>DBpedia</strong> as a <strong>GSoC 2026</strong> developer. 
+                    I write here about what I'm building, breaking, and learning along the way — 
+                    mostly Hindi NLP, knowledge graphs, and open source.
                 </p>
                 <p>
                     This summer I'm working on fine-tuning small language models for Hindi relational 
@@ -35,7 +40,16 @@ const posts = await getCollection('blog')
 </DefaultPageLayout>
 <style>
     .hero {
-        @apply flex flex-col gap-8 w-full transition-all pb-4
+        @apply flex flex-col gap-6 w-full transition-all pb-4
+    }
+    .badges {
+        @apply flex flex-row items-center gap-4 justify-center md:justify-start py-2
+    }
+    .badge-logo {
+        @apply h-12 w-auto object-contain
+    }
+    .badge-x {
+        @apply text-2xl text-gray-400 font-light
     }
     .hero__says {
         @apply flex-1 text-center md:text-left
