@@ -5,23 +5,15 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
 import { defineConfig } from "astro/config";
-import vercel from "@astrojs/vercel/serverless";
 import markdoc from "@astrojs/markdoc";
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 import remarkCodeTitles from 'remark-code-titles'
-import decapCmsOauth from "astro-decap-cms-oauth";
 
-// Full Astro Configuration API Documentation:
-// https://docs.astro.build/reference/configuration-reference
-
-// https://astro.build/config
-export default defineConfig( /** @type {import('astro').AstroUserConfig} */{
-  output: 'server',
-  site: 'https://astro-ink.vercel.app', // Your public domain, e.g.: https://my-site.dev/. Used to generate sitemaps and canonical URLs.
-  server: {
-    // port: 4321, // The port to run the dev server on.
-  },
+export default defineConfig({
+  output: 'static',
+  site: 'https://singhhnitin.github.io',
   markdown: {
     syntaxHighlight: 'shiki',
     shikiConfig: {
@@ -39,7 +31,6 @@ export default defineConfig( /** @type {import('astro').AstroUserConfig} */{
       applyBaseStyles: false,
     }), 
     sitemap(),
-    decapCmsOauth()
   ],
   vite: {
     plugins: [],
@@ -52,5 +43,4 @@ export default defineConfig( /** @type {import('astro').AstroUserConfig} */{
       allowNodeBuiltins: true
     }
   },
-  adapter: vercel()
 });
