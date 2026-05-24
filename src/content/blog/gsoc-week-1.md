@@ -1,7 +1,7 @@
 ---
 title: "Week 1 — Setting Up, Shipping Nothing, Learning Everything"
 description: "First week as a GSoC 2026 contributor at DBpedia Hindi Chapter."
-pubDate: "May 24 2026"
+pubDate: 2026-05-24T00:00:00.000Z
 tags: ["gsoc", "dbpedia", "hindi-nlp", "open-source"]
 layout: ../../layouts/post.astro
 ---
