@@ -11,9 +11,9 @@ const posts = await getCollection('blog')
 <DefaultPageLayout content={{ title, description }} showPageHeader={false}>
     <div class="hero">
         <div class="badges">
-            <img src="/gsoc.png" alt="Google Summer of Code" class="badge-logo" />
+            <img src="/gsoc.png" alt="Google Summer of Code" style="height:60px;width:auto;" />
             <span class="badge-x">×</span>
-            <img src="/dbpedia.png" alt="DBpedia" class="badge-logo" />
+            <img src="/dbpedia.png" alt="DBpedia" style="height:50px;width:auto;" />
         </div>
         <div class="hero__says">
             <Prose>
@@ -43,13 +43,16 @@ const posts = await getCollection('blog')
         @apply flex flex-col gap-6 w-full transition-all pb-4
     }
     .badges {
-        @apply flex flex-row items-center gap-4 justify-center md:justify-start py-2
-    }
-    .badge-logo {
-        @apply h-12 w-auto object-contain
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 16px;
+        padding: 8px 0;
     }
     .badge-x {
-        @apply text-2xl text-gray-400 font-light
+        font-size: 24px;
+        color: #9ca3af;
+        font-weight: 300;
     }
     .hero__says {
         @apply flex-1 text-center md:text-left
