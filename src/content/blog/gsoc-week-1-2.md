@@ -1,7 +1,7 @@
 ---
 title: "GSoC Week 1-2: Quantifying Where the Existing Pipeline Breaks"
 description: "Establishing reproducible Phase 1 baselines on Hindi-BenchIE, and a previously undocumented failure mode hiding inside IndIE's rule engine."
-pubDate: 2026-05-27T00:00:00.000Z
+pubDate: 2026-06-09T00:00:00.000Z
 tags: ["gsoc", "dbpedia", "hindi-nlp", "benchmarks"]
 layout: ../../layouts/post.astro
 ---
