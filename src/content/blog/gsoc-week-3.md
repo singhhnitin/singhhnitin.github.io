@@ -1,7 +1,7 @@
 ---
 title: "GSoC Week 3: Auditing the 20K Dataset End to End"
 description: "A full content audit of the existing synthetic dataset surfaced a 78.8% property-relation bias, a failed first attempt at ontology alignment, and a clean justification for why off-the-shelf Indic models aren't a shortcut."
-pubDate: 2026-06-09T00:00:00.000Z
+pubDate: 2026-06-16T00:00:00.000Z
 tags: ["gsoc", "dbpedia", "hindi-nlp", "fine-tuning"]
 layout: ../../layouts/post.astro
 ---
