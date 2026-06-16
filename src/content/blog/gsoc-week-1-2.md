@@ -32,14 +32,8 @@ Before deciding anything about training data, I wanted an evidence-based answer 
 
 For a narrow, well-defined structured extraction task with a consistent JSON output format, the research on this is fairly consistent:
 
-| Dataset size | What it achieves |
-|---|---|
-| 100–500 examples | Model learns the output format; limited task transfer |
-| 500–2,000 examples | Strong performance on narrow, consistent tasks |
-| 2,000–5,000 examples | Good generalisation across diverse sentence constructions |
-| 5,000–20,000 examples | Diminishing returns for narrow tasks; quality matters more than quantity |
 
-The practical target this points to is 2,000–5,000 high-quality (sentence → triple) pairs — not the full 20K dataset at hand. The more interesting implication is that quality beats quantity well before that ceiling: a smaller set of manually verified examples, anchored against Hindi-BenchIE's gold annotations, should outperform a much larger but noisier synthetic set. That single conclusion ends up shaping most of what Week 3 turned into.
+The more interesting implication is that quality beats quantity well before that ceiling: a smaller set of manually verified examples, anchored against Hindi-BenchIE's gold annotations, should outperform a much larger but noisier synthetic set. That single conclusion ends up shaping most of what Week 3 turned into.
 
 ## Resources
 
