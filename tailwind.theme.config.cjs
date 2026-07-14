@@ -20,18 +20,18 @@ module.exports = {
     },
     default: {
         colors: {
-            primary: '#1a1a1a',
-            secondary: '#000000',
+            primary: '#334155',
+            secondary: '#1e293b',
             dark: {
-                primary: '#1a1a1a',
-                secondary: '#000000'
+                primary: '#334155',
+                secondary: '#1e293b'
             },
             accent: {
                 gray: {
                     light: colors.gray[300],
                     dark: colors.gray[600]
                 },
-                default: '#1a1a1a'
+                default: '#334155'
             }
         }
     }
