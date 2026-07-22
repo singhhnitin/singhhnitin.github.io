@@ -5,7 +5,7 @@ pubDate: 2026-06-16T00:00:00.000Z
 tags: ["gsoc", "dbpedia", "hindi-nlp", "fine-tuning"]
 ---
 
-Week 1-2 established that 2,000–5,000 high-quality examples should be enough for fine-tuning, in principle. Week 3 was about finding out how much of the existing 20K-example dataset actually clears that bar.
+Week 2 established that 2,000–5,000 high-quality examples should be enough for fine-tuning, in principle. Week 3 was about finding out how much of the existing 20K-example dataset actually clears that bar.
 
 ## What's in the dataset
 
@@ -21,7 +21,7 @@ Numbers alone don't explain why a score happens, so I read a sample at every sco
 
 This was the most consequential finding of the audit. Across all 176,817 triplets in the dataset, 139,321 — 78.8% — use a generic `"property"` relation rather than an actual Hindi verb. Only 21.2% use real verb relations. On average, each example contains 7.0 property relations against just 1.9 real verb relations, and the ratio barely shifts after filtering to score ≥9: 55,440 property triplets against 16,295 verb triplets, still a 77.3/22.7 split.
 
-This connects directly back to the PREDICATE_PLACEHOLDER pattern found in Week 1-2. Fine-tuning a model on this dataset unfiltered would teach it to output a generic, non-committal predicate close to 80% of the time — reproducing the exact failure mode this project is meant to fix, just learned from training data instead of inherited from a rule engine's fallback behaviour. It's the clearest argument so far for training in stages: first on the full filtered set to establish Hindi sentence structure and reasoning, then specifically rebalanced toward verb relations, and only then layered with ontology-aligned examples.
+This connects directly back to the PREDICATE_PLACEHOLDER pattern found in Week 2. Fine-tuning a model on this dataset unfiltered would teach it to output a generic, non-committal predicate close to 80% of the time — reproducing the exact failure mode this project is meant to fix, just learned from training data instead of inherited from a rule engine's fallback behaviour. It's the clearest argument so far for training in stages: first on the full filtered set to establish Hindi sentence structure and reasoning, then specifically rebalanced toward verb relations, and only then layered with ontology-aligned examples.
 
 ## Everything else the audit turned up
 

@@ -1,20 +1,20 @@
 ---
-title: "Week 6: Watching Paint Dry, But Make It Suspenseful"
-description: "Two training runs, two learning rates, and what happens when a model gets too comfortable with its own homework."
+title: "GSoC Week 6: Comparing Two Learning Rates Across Fine-Tuning Runs"
+description: "Two training runs, two learning rates, and what a model overfitting to its own training data looks like in practice."
 pubDate: 2026-07-07T00:00:00.000Z
 tags: ["gsoc", "dbpedia", "hindi-nlp", "training"]
 ---
 
-Training an AI model for real, at full scale, takes a long time. Like, "check back tomorrow" long. This week was less about building new things and more about watching, waiting, and learning to read the tea leaves of a slowly evolving graph.
+With the pipeline working, this week was spent running full-scale training and comparing results, rather than building anything new.
 
-## Two runs, two personalities
+## Two runs, different learning rates
 
-I set up two identical training runs, differing only in one setting: how big a step the model takes each time it learns from a mistake. One took bold, confident steps. The other took small, cautious ones. Think of it as the difference between someone adjusting a recipe by dumping in extra spice versus someone adding it a pinch at a time.
+I set up two identical training runs that differed only in the learning rate — how large a step the model takes when updating its weights after each mistake. One used a higher learning rate, the other a lower one.
 
-The bold version learned fast — its error rate plummeted almost immediately, and it started acing its own training examples with startling confidence. But when I checked how it did on new sentences it had never seen before, its performance quietly plateaued, even dipped slightly, while it kept getting better and better at the sentences it had already memorized. That's the textbook signature of a model getting a little too comfortable with its homework instead of genuinely learning the subject.
+The higher learning rate run improved quickly: its error rate on training examples dropped fast, and it reached high accuracy on the data it was trained on. But when evaluated on sentences it hadn't seen during training, its performance plateaued and dipped slightly, even as its training accuracy kept improving. That pattern — improving on training data while validation performance stalls or drops — is a standard sign of overfitting, where the model is starting to memorize specific training examples rather than learning generalizable patterns.
 
-The cautious version told a different story. It never got quite as confident on its training data, but it held up just a touch better on brand-new sentences it had never encountered. Small steps, it turns out, sometimes age better than big ones.
+The lower learning rate run showed a different pattern: it didn't reach quite as high an accuracy on its own training data, but it held up slightly better on new, unseen sentences.
 
-## The result
+## Result
 
-Both runs finished successfully after roughly a day and a half each — no crashes, no disasters, just two very different personalities emerging from the exact same starting point and the exact same data.
+Both training runs completed successfully in roughly a day and a half each, with no crashes. The comparison is what determines which learning rate to carry forward for the next round of fine-tuning.

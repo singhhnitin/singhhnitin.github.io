@@ -1,34 +1,26 @@
 ---
-title: "Week 7: The Case of the Suspiciously Bad Grades"
-description: "Zero percent correct across every category, a broken scorekeeper, and the lesson that sometimes a bad-looking number is just a bug in a scary costume."
+title: "GSoC Week 7: Fixing a Broken Evaluation Script and Building a Fairer Scoring Method"
+description: "An evaluation that initially showed 0% correct turned out to be a bug in the scoring script, not the model — and the fairer scoring method built afterward."
 pubDate: 2026-07-14T00:00:00.000Z
 tags: ["gsoc", "dbpedia", "hindi-nlp", "evaluation"]
 ---
 
-This week started with a genuine scare.
+This week centered on evaluating the fine-tuned models properly, which surfaced a bug in the evaluation process itself before it surfaced anything about the models.
 
-## Zero percent correct
+## An evaluation that showed 0% correct
 
-I built a proper evaluation — 150 sentences pulled from three different sources, specifically designed to answer one question: is this model actually learning anything real?
+I built a proper evaluation set — 150 sentences pulled from three different sources — to check whether the fine-tuned model was actually extracting triples correctly. The first results came back at 0% correct across almost every category.
 
-The first results came back and they were bad. Not "needs improvement" bad — zero percent correct bad, across almost every category. My stomach dropped a little. Had all this work led nowhere?
+Rather than treating that number at face value, I read through the actual model outputs directly instead of relying on the aggregate score. The model's answers were frequently correct, but the output didn't stop there — it kept generating text after the correct answer, eventually repeating itself until it ran out of space. The evaluation script wasn't detecting the token the model uses to signal it's finished answering, so it let the model keep generating past that point, then scored the entire rambling output — correct answer included — as wrong.
 
-I did what any good detective would do: I stopped trusting the scoreboard and went and read the actual evidence myself, line by line. And there it was — the model's answers were often genuinely correct, sitting right there in plain sight... immediately followed by a strange glitch where it kept talking long after it should have stopped, eventually spiraling into repeating itself over and over until it ran out of room.
+## Fixing the evaluation script
 
-The model wasn't failing. My scorekeeper was broken.
+Once the evaluation script was updated to detect the model's actual stop signal, the results changed substantially: the model went from producing outputs that scored as unusable to producing correctly-formatted answers close to 100% of the time.
 
-## The real bug
+## A fairer scoring method
 
-It turned out the model has a very specific way of signaling "I'm done answering," and my evaluation script simply wasn't listening for that exact signal — so it let the model ramble on into nonsense, and then judged the whole rambling mess as one big wrong answer, even though the real answer, buried at the top, was correct.
-
-Fixing that one detail flipped the results almost overnight — the model went from "producing garbage" to "producing clean, correctly-formatted answers" essentially 100% of the time.
-
-## Building a fairer scoring system
-
-Even after that fix, I noticed something more subtle: a strict word-for-word grading system still marked many good answers as "wrong," simply because the model organized its answer slightly differently than the reference — same facts, different arrangement.
-
-So I built a fairer way of scoring: instead of demanding an exact match, it checks whether each individual fact the model extracted was actually correct, regardless of order or grouping. It's the difference between grading an essay only if every word matches a rubric exactly, versus actually reading it for whether the ideas are right.
+Even after that fix, a second issue remained: the scoring was doing an exact string match against a reference answer, which marked correct extractions as wrong whenever the model produced the same facts in a different order or grouping. I built a fact-level scoring method instead — it checks whether each individual extracted fact is correct, independent of the order or structure the model presented them in.
 
 ## Where things stand
 
-By week's end, I had two fully trained models, a properly working evaluation system, and a much better sense of a lesson that I suspect will keep coming back throughout this project: sometimes the hardest bugs to find aren't in the thing you built — they're in the thing you built to check your work.
+By the end of the week, there were two fully trained models and a working evaluation system that measures fact-level correctness rather than exact string matches — plus a clear reminder that an evaluation script needs to be checked as carefully as the thing it's evaluating.

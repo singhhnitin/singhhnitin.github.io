@@ -1,24 +1,22 @@
 ---
-title: "Week 5: The Marathon Nobody Warned Me About"
-description: "Smoke test failures, a crash inside the model's own generation code, and finally hitting go on the real training run."
+title: "GSoC Week 5: Debugging the Fine-Tuning Pipeline and Launching the First Training Run"
+description: "Smoke test failures, a crash inside the model's own generation code, and finally launching the real training run."
 pubDate: 2026-06-30T00:00:00.000Z
 tags: ["gsoc", "dbpedia", "hindi-nlp", "fine-tuning"]
 ---
 
-This week, I learned that training an AI model is a bit like baking a very large, very slow cake — and you don't get to open the oven and check on it whenever you want.
+This week was spent getting the fine-tuning pipeline to actually run, before the real training could start.
 
-## Nothing went smoothly at first
+## Smoke test failures
 
-I ran what's called a "smoke test" — a tiny practice run to make sure everything works before committing to the real thing. It did not go smoothly. Over several attempts, I hit one wall after another: an environment that was too outdated to even load the model, a dataset that confused the loading system because different parts of it were shaped slightly differently, and — the trickiest one — a bug in the model's own underlying code that caused it to crash the moment it tried to actually generate an answer.
+I ran a smoke test — a small practice run meant to confirm the setup works before committing to the full training run. It surfaced several problems in sequence: an outdated environment that couldn't load the model, a dataset where inconsistent formatting across different parts confused the loading step, and a bug in the model's own generation code that caused a crash whenever it tried to generate a full answer in one pass.
 
-That last one took real detective work. I ended up writing my own custom generation logic — instead of asking the model to write its whole answer in one go (which is where the crash happened), I made it write one word at a time, checking in after each one. Slower, but bulletproof. It felt a bit like teaching someone to walk before letting them run.
+The generation crash took the most work to resolve. I wrote custom generation logic that produces the answer one token at a time instead of all at once, checking after each token rather than generating the full response in a single call. That avoided the crash, at the cost of being slower.
 
-## Reshaping the plan
+## Adjusting the training scope
 
-Feedback from a mentor sync reshaped the whole approach: instead of training on everything, including some unusually long and complicated examples, we'd start with a clean, focused subset first — establish a solid baseline, then build up from there.
+Based on feedback from a mentor sync, the plan changed from training on the full dataset immediately to starting with a smaller, cleaner subset first, to establish a working baseline before scaling up. Filtering the dataset down to that clean subset also showed that every example in it was already short enough that no additional length filtering was needed, and reducing the model's context window to match sped up training as a side effect.
 
-I filtered the dataset down, discovered something convenient (every single "clean" example was comfortably short, meaning zero extra filtering was needed), and reduced the model's working memory window to match — which, as a nice side effect, made training noticeably faster.
+## Launching the training run
 
-## Finally hitting go
-
-By the end of the week, I finally started the real training run — and this time, it actually ran.
+With the pipeline fixed and the training scope adjusted, the first full training run started by the end of the week and completed without the earlier crashes.
