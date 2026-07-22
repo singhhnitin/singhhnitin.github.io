@@ -1,7 +1,7 @@
 ---
 title: "Week 6: Watching Paint Dry, But Make It Suspenseful"
 description: "Two training runs, two learning rates, and what happens when a model gets too comfortable with its own homework."
-pubDate: 2026-06-30T00:00:00.000Z
+pubDate: 2026-07-07T00:00:00.000Z
 tags: ["gsoc", "dbpedia", "hindi-nlp", "training"]
 layout: ../../layouts/post.astro
 ---
