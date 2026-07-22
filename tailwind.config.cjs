@@ -25,62 +25,52 @@ module.exports = {
                 }
             },
             typography: (theme) => ({
-                dark: {
+                invert: {
                     css: {
-                        color: colors.dark.secondary,
-                        blockquote: {
-                            color: colors.dark.primary,
-                            borderColor: colors.dark.primary,
-                        },
-                        'blockquote > p::before, p::after': {
-                            color: colors.dark.primary,
-                        },
-                        a: {
-                            color: colors.dark.primary,
-                            '&:hover': {
-                                color: colors.dark.primary,
-                            },
-                        },
-                        h1: { color: colors.dark.secondary },
-                        h2: { color: colors.dark.secondary },
-                        h3: { color: colors.dark.secondary },
-                        strong: { color: colors.dark.secondary },
-                        code: { color: colors.accent['teal-dark'] },
+                        '--tw-prose-invert-body': 'var(--text-muted)',
+                        '--tw-prose-invert-headings': 'var(--text)',
+                        '--tw-prose-invert-bold': 'var(--text)',
+                        '--tw-prose-invert-links': 'var(--accent)',
+                        '--tw-prose-invert-code': 'var(--accent-2)',
+                        '--tw-prose-invert-quotes': 'var(--text-muted)',
+                        '--tw-prose-invert-quote-borders': 'var(--accent)',
                     },
                 },
                 DEFAULT: {
                     css: {
+                        '--tw-prose-body': 'var(--text-muted)',
+                        '--tw-prose-headings': 'var(--text)',
+                        '--tw-prose-bold': 'var(--text)',
+                        '--tw-prose-links': 'var(--accent)',
+                        '--tw-prose-code': 'var(--accent-2)',
+                        '--tw-prose-quotes': 'var(--text-muted)',
+                        '--tw-prose-quote-borders': 'var(--accent)',
+                        color: 'var(--text-muted)',
+                        maxWidth: 'none',
                         a: {
-                            color: colors.primary,
+                            color: 'var(--accent)',
                             '&:hover': {
-                                color: colors.primary,
+                                color: 'var(--accent-2)',
                             },
                         },
                         blockquote: {
-                            color: colors.primary,
+                            color: 'var(--text-muted)',
                             fontSize: theme("fontSize.2xl"),
-                            borderColor: colors.primary,
+                            fontStyle: 'normal',
+                            borderColor: 'var(--accent)',
                         },
                         'blockquote > p::before, p::after': {
-                            color: colors.primary,
+                            color: 'var(--accent)',
                         },
-                        h1: {
-                            color: colors.secondary,
-                        },
-                        h2: {
-                            color: colors.secondary,
-                        },
-                        h3: {
-                            color: colors.secondary,
-                        },
-                        code: { color: colors.accent.teal },
+                        h1: { color: 'var(--text)' },
+                        h2: { color: 'var(--text)' },
+                        h3: { color: 'var(--text)' },
+                        strong: { color: 'var(--text)' },
+                        code: { color: 'var(--accent-2)' },
                     }
                 },
             }),
         },
-    },
-    variants: {
-        extend: { typography: ["dark"] }
     },
     plugins: [
         require('@tailwindcss/typography'),
