@@ -2,13 +2,13 @@ backend:
   name: github
   branch: main
   publish_mode: editorial_workflow
-  repo: one-aalam/astro-ink # change this to your repo
-  site_domain: astro-ink.vercel.app # change this to your domain
-  base_url: https://astro-ink.vercel.app # change this to your prod URL
+  repo: singhhnitin/singhhnitin.github.io
+  site_domain: singhhnitin.github.io
+  base_url: https://singhhnitin.github.io
   auth_scope: repo
   auth_endpoint: oauth
-  display_url: https://astro-ink.vercel.app
-  logo_url: https://astro-ink.vercel.app/assets/logo.svg
+  display_url: https://singhhnitin.github.io
+  logo_url: https://singhhnitin.github.io/astro-ink-logo.png
   commit_messages:
     create: 'Create {{collection}} “{{slug}}”'
     update: 'Update {{collection}} “{{slug}}”'

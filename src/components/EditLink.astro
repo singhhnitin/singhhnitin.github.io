@@ -1,5 +1,5 @@
 ---
-import { Icon } from 'astro-icon'
+import MdiIcon from './MdiIcon.astro'
 
 interface Props {
     label?: string,
@@ -12,7 +12,7 @@ const { editUrl, label = 'Edit this page' } = Astro.props
 {
     editUrl && (
         <a href={editUrl} title={label} class=" font-thin text-theme-primary dark:text-theme-dark-primary text-sm">
-            <Icon class="w-4 h-4 inline-block" pack="mdi" name={'pencil'} />
+            <MdiIcon class="w-4 h-4 inline-block" name="pencil" />
             {label}
         </a>
     )

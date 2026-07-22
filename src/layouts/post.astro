@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import Icon from 'astro-icon';
+import MdiIcon from '$/components/MdiIcon.astro';
 import { SITE, USE_POST_IMG_OVERLAY, USE_AUTHOR_CARD, USE_SUBSCRIPTION, USE_VIEW_STATS } from '$/config'
 import MainLayout from '$/components/MainLayout.astro'
 import BaseHead from '$/components/BaseHead.astro'
@@ -54,7 +54,7 @@ const AUTHOR_AVATAR = content.authorImage ? content.authorImage : SITE?.authorIm
                     <span class="post__stats">
                         { USE_VIEW_STATS && ` | `}
                         { USE_VIEW_STATS && 
-                            <Icon class="w-5 h-5 inline-block" pack="mdi" name="eye" />
+                            <MdiIcon class="w-5 h-5 inline-block" name="eye" />
                             <PostStats slug={meta?.slug} client:load /> 
                         }
                         <!-- | <Icon class="w-5 h-5 inline-block" pack="mdi" name="clock" /> 2 mins -->
@@ -97,7 +97,7 @@ const AUTHOR_AVATAR = content.authorImage ? content.authorImage : SITE?.authorIm
                                 <input type="email" name="email" class="flex-grow border-0 text-theme-accent-gray-dark" required="true">
                                 <button type="submit">Subscribe</button>
                             </form> :
-                            <a class="author-card__follow-btn button" target="_blank" href={`https://twitter.com/intent/follow?screen_name=${AUTHOR_TWITTER}`}><Icon class="w-5 h-5 inline-block" pack="mdi" name="twitter" /> Follow on Twitter</a>
+                            <a class="author-card__follow-btn button" target="_blank" href={`https://twitter.com/intent/follow?screen_name=${AUTHOR_TWITTER}`}><MdiIcon class="w-5 h-5 inline-block" name="twitter" /> Follow on Twitter</a>
                         }
                     </div>
                 </div>

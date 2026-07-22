@@ -1,16 +1,16 @@
 ---
-import { Icon } from 'astro-icon'
+import MdiIcon from '../MdiIcon.astro'
 export type CalloutType = 'check' | 'error' | 'note' | 'warning'
 interface Props {
     title: string
     type: CalloutType
 }
 
-const ICON_MAP: Record<CalloutType, string> = {
+const ICON_MAP: Record<CalloutType, 'check-circle' | 'close-circle' | 'note-text' | 'alert-circle'> = {
     'check': 'check-circle',
     'error': 'close-circle',
-    'note': 'note',
-    'warning': 'warning-circle'
+    'note': 'note-text',
+    'warning': 'alert-circle'
 }
 
 const COLOR_MAP: Record<CalloutType, string> = {
@@ -23,7 +23,7 @@ const COLOR_MAP: Record<CalloutType, string> = {
 const { title, type = 'note' } = Astro.props
 ---
 <div class="callout flex gap-2 w-full bg-gray-200/75 dark:bg-gray-600/75 p-4 rounded-sm shadow-sm">
-    <Icon class={`w-6 h-6 inline-block ${COLOR_MAP[type]}`} pack="mdi" name={ICON_MAP[type]} />
+    <MdiIcon class={`w-6 h-6 inline-block ${COLOR_MAP[type]}`} name={ICON_MAP[type]} />
     <div class="copy flex flex-col">
         <h4 class={`title m-0 ${COLOR_MAP[type]}`}>{title}</h4>
         <slot/>
