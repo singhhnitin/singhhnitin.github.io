@@ -1,7 +1,7 @@
 ---
 title: "Week 4: Teaching a Machine to Read Between the Lines"
 description: "Recalibrating a biased scoring judge, rescuing data from a pronoun problem, and building a clean dataset for fine-tuning."
-pubDate: 2026-06-16T00:00:00.000Z
+pubDate: 2026-06-23T00:00:00.000Z
 tags: ["gsoc", "dbpedia", "hindi-nlp", "dataset"]
 layout: ../../layouts/post.astro
 ---
