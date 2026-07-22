@@ -1,5 +1,4 @@
 ---
-import BaseLayout from './BaseLayout.astro';
 import Header from './Header.astro';
 import Footer from './Footer.astro';
 import Nav from './Nav.astro';
@@ -7,22 +6,26 @@ import Portal from './Portal.astro';
 import SearchModal from './SearchModal.svelte'
 
 ---
-<BaseLayout>
-    <br class="my-4"/>
+<div class="site">
     <Header/>
     <Nav/>
     <div class="content">
         <slot />
     </div>
-    <br class="my-4"/>
     <Footer/>
     <Portal>
             <SearchModal client:load/>
     </Portal>
-</BaseLayout>
+</div>
 
 <style>
+    .site {
+        @apply relative mx-auto my-6 sm:my-10 w-full rounded-2xl border px-5 sm:px-10 py-6 sm:py-8;
+        background: var(--bg-panel);
+        border-color: var(--border);
+        box-shadow: var(--shadow);
+    }
     .content {
-        min-height: 580px
+        min-height: 480px
     }
 </style>

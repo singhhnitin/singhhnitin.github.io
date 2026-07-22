@@ -3,7 +3,6 @@ title: "Week 5: The Marathon Nobody Warned Me About"
 description: "Smoke test failures, a crash inside the model's own generation code, and finally hitting go on the real training run."
 pubDate: 2026-06-30T00:00:00.000Z
 tags: ["gsoc", "dbpedia", "hindi-nlp", "fine-tuning"]
-layout: ../../layouts/post.astro
 ---
 
 This week, I learned that training an AI model is a bit like baking a very large, very slow cake — and you don't get to open the oven and check on it whenever you want.

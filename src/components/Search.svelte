@@ -73,24 +73,36 @@
 </div>
 <style>
     .search {
-        @apply w-full relative bg-theme-primary  p-8  rounded-md shadow-lg;
+        @apply w-full relative p-8 rounded-xl border;
+        background: var(--bg-panel);
+        border-color: var(--border);
+        box-shadow: var(--shadow);
     }
     input {
-        @apply w-full px-4 py-2 pl-10 text-xl font-semibold text-gray-600 border-0 shadow-inner rounded-md bg-gray-100 placeholder-theme-dark-secondary;
+        @apply w-full px-4 py-2 pl-10 text-lg font-medium border rounded-md;
+        background: var(--bg-raised-2);
+        color: var(--text);
+        border-color: var(--border);
+    }
+    input::placeholder {
+        color: var(--text-muted);
     }
     .search__ctrl {
         @apply pb-4 relative;
     }
     .search__ctrl label {
-        @apply text-theme-primary absolute top-2 left-2;
+        color: var(--accent);
+        @apply absolute top-2 left-2;
     }
     .search__results {
-        @apply w-96 h-64 py-4 overflow-y-auto;
+        @apply w-full sm:w-96 h-64 py-4 overflow-y-auto;
     }
     .search__results--none {
-        @apply  text-center text-theme-dark-primary;
+        @apply text-center;
+        color: var(--text-muted);
     }
     .note {
-        @apply w-full text-center text-white;
+        @apply w-full text-center;
+        color: var(--text-muted);
     }
 </style>

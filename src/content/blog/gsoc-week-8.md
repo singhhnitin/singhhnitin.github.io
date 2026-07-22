@@ -3,7 +3,6 @@ title: "Week 8: Predicate-Linking Fine-Tuning and the Normalization Decision Poi
 description: "Building a full-scale gold set across 8,034 predicates, an encoding mismatch that invalidated early results, and the open question heading into next week."
 pubDate: 2026-07-21T00:00:00.000Z
 tags: ["gsoc", "dbpedia", "hindi-nlp", "predicate-linking"]
-layout: ../../layouts/post.astro
 ---
 
 This week centered on closing the loop on the predicate-linking model — the component that maps extracted Hindi predicates to DBpedia ontology properties, and which the entire normalization pipeline depends on.

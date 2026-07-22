@@ -1,12 +1,38 @@
-<html lang="en" class="dark">
-<head>
-    <slot name="head" />
-</head>
-<body style="background-color:#0f0f0f;color:#e2e2e2;font-family:sans-serif;min-height:100vh;margin:0;">
-    <div>
-        <main style="max-width:56rem;margin:0 auto;padding:0 1rem;">
-            <slot />
-        </main>
+---
+/**
+ * This used to render its own <html><head><body>, nested inside the
+ * <html> that default.astro / post.astro already own. Two <html>/<body>
+ * elements on one page is invalid markup and is what was causing the
+ * page content to appear to render twice. This is now a plain wrapper —
+ * the real <html>/<body> live one level up.
+ */
+---
+<div class="canvas">
+    <div class="canvas__field" aria-hidden="true"></div>
+    <div class="panel">
+        <slot />
     </div>
-</body>
-</html>
+</div>
+<style>
+    .canvas {
+        @apply relative min-h-screen w-full overflow-x-clip;
+        background: var(--bg);
+    }
+    /* Faint node/edge field on the wide margins either side of the panel —
+       a nod to the knowledge graphs this blog is actually about, rather
+       than an empty void. Pure decoration, stays out of the reading column. */
+    .canvas__field {
+        @apply pointer-events-none absolute inset-0;
+        background-image:
+            radial-gradient(circle at 1px 1px, var(--border) 1px, transparent 0);
+        background-size: 28px 28px;
+        -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, transparent 55%, black 100%);
+        mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, transparent 55%, black 100%);
+        opacity: 0.6;
+    }
+    .panel {
+        @apply relative mx-auto w-full;
+        max-width: 1040px;
+        padding: 0 1.25rem;
+    }
+</style>

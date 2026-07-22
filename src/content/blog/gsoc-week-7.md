@@ -3,7 +3,6 @@ title: "Week 7: The Case of the Suspiciously Bad Grades"
 description: "Zero percent correct across every category, a broken scorekeeper, and the lesson that sometimes a bad-looking number is just a bug in a scary costume."
 pubDate: 2026-07-14T00:00:00.000Z
 tags: ["gsoc", "dbpedia", "hindi-nlp", "evaluation"]
-layout: ../../layouts/post.astro
 ---
 
 This week started with a genuine scare.

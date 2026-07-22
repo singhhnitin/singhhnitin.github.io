@@ -3,7 +3,6 @@ title: "Week 6: Watching Paint Dry, But Make It Suspenseful"
 description: "Two training runs, two learning rates, and what happens when a model gets too comfortable with its own homework."
 pubDate: 2026-07-07T00:00:00.000Z
 tags: ["gsoc", "dbpedia", "hindi-nlp", "training"]
-layout: ../../layouts/post.astro
 ---
 
 Training an AI model for real, at full scale, takes a long time. Like, "check back tomorrow" long. This week was less about building new things and more about watching, waiting, and learning to read the tea leaves of a slowly evolving graph.

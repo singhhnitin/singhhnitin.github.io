@@ -6,7 +6,7 @@
 ---
 <header class="header">
     <div class="header__meta flex-1">
-        <h3 class="header__title dark:text-theme-dark-secondary">
+        <h3 class="header__title">
             <a href="/">{ SITE.name }</a>
         </h3>
         <div class="header__meta-more flex">
@@ -44,15 +44,34 @@
 </header>
 <style>
     .header {
-        @apply flex gap-4 border-b py-3
+        @apply flex gap-4 border-b py-5;
+        border-color: var(--border);
     }
     .header__title {
-        @apply text-4xl font-extrabold md:text-5xl text-theme-secondary dark:text-theme-dark-secondary
+        @apply font-display text-4xl md:text-5xl font-semibold tracking-tight;
+    }
+    .header__title a {
+        color: var(--accent);
+        text-decoration: none;
+    }
+    .header__title a:hover {
+        color: var(--accent-2);
     }
     .header__desc {
-        @apply text-xl flex-1 dark:text-gray-200
+        @apply text-lg md:text-xl flex-1 mt-2;
+        color: var(--text-muted);
     }
     .header__ref-list {
-        @apply flex gap-3 text-gray-400
+        @apply flex gap-4 items-center;
+        color: var(--text-muted);
+    }
+    .header__ref-list :global(a),
+    .header__ref-list :global(button) {
+        color: var(--text-muted);
+        transition: color 0.15s ease;
+    }
+    .header__ref-list :global(a:hover),
+    .header__ref-list :global(button:hover) {
+        color: var(--accent);
     }
 </style>

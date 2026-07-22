@@ -3,20 +3,37 @@ import { toTitleCase } from '$/utils'
 import { NAV_ITEMS } from '$/config'
 ---
 <nav class="nav py-3">
-    <ul class="nav-list dark:text-theme-dark-secondary" transition:animate="fade">
+    <ul class="nav-list" transition:animate="fade">
          {
             Object.keys(NAV_ITEMS).map(navItemKey => <li>
-                <a class:list={[
-                    `pb-1 border-b-2 hover:border-gray-400 hover:dark:border-gray-700 `,
-                    Astro.url.pathname !== NAV_ITEMS[navItemKey].path ? 'border-gray-100 dark:border-gray-800': '',
-                    Astro.url.pathname === NAV_ITEMS[navItemKey].path ? 'border-theme-primary' : ''
-                ]} href={NAV_ITEMS[navItemKey].path} title={NAV_ITEMS[navItemKey].title}>{toTitleCase(NAV_ITEMS[navItemKey].title)}</a>
+                <a
+                    class:list={[
+                        'nav-link',
+                        Astro.url.pathname === NAV_ITEMS[navItemKey].path ? 'nav-link--active' : ''
+                    ]}
+                    href={NAV_ITEMS[navItemKey].path}
+                    title={NAV_ITEMS[navItemKey].title}
+                >{toTitleCase(NAV_ITEMS[navItemKey].title)}</a>
             </li>)
         }
     </ul>
 </nav>
 <style>
     .nav-list {
-        @apply inline-flex list-none gap-8 text-xl font-semibold text-theme-secondary dark:text-theme-dark-secondary py-2 flex-wrap mb-8
+        @apply inline-flex list-none gap-6 sm:gap-8 py-2 flex-wrap mb-6;
+        font-family: 'JetBrains Mono', ui-monospace, monospace;
+    }
+    .nav-link {
+        @apply pb-1.5 border-b-2 text-sm sm:text-base font-medium uppercase tracking-wide no-underline transition-colors;
+        color: var(--text-muted);
+        border-color: transparent;
+    }
+    .nav-link:hover {
+        color: var(--text);
+        border-color: var(--border);
+    }
+    .nav-link--active {
+        color: var(--accent);
+        border-color: var(--accent);
     }
 </style>

@@ -9,7 +9,7 @@
     export let post: Props
     export let isLast: boolean = false
 </script>
-<div class="post-preview hover:bg-theme-primary">
+<div class="post-preview">
     <div class="flex-1">
         <h4 class="post-preview__title">
             <a href={`/${post.category}/${post.slug}`} title={post.title}>{post.title} &rarr;</a>
@@ -25,22 +25,35 @@
     </div>
 </div>
 {#if !isLast}
-    <hr class="my-4 text-theme-dark-secondary"/>
+    <hr class="search-hr"/>
 {/if}
 <style lang="postcss">
     .post-preview {
-        @apply  flex gap-6 text-left;
+        @apply flex gap-6 text-left rounded-lg transition-colors -mx-2 px-2 py-1;
+    }
+    .post-preview:hover {
+        background: var(--accent-soft);
     }
     .post-preview__title {
-        @apply text-lg leading-tight font-semibold text-white mb-2;
+        @apply text-lg leading-tight font-semibold mb-2;
+        font-family: 'Fraunces', ui-serif, serif;
+        color: var(--text);
     }
     .post-preview__desc {
-        @apply text-base text-theme-dark-primary leading-5 line-clamp-2;
+        @apply text-base leading-5 line-clamp-2;
+        color: var(--text-muted);
     }
     .tag-list {
         @apply list-none py-2 flex flex-wrap gap-2;
     }
     .tag {
-        @apply inline-block text-xs px-4 py-1 rounded-full text-theme-primary bg-theme-dark-primary;
+        @apply inline-block text-xs px-3 py-1 rounded-full;
+        font-family: 'JetBrains Mono', ui-monospace, monospace;
+        color: var(--accent-2);
+        background: var(--bg-raised-2);
+    }
+    .search-hr {
+        @apply my-4;
+        border-color: var(--border);
     }
 </style>

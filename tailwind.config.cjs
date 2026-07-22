@@ -13,10 +13,12 @@ module.exports = {
     ],
     safelist: ['dark'],
     theme: {
-		fontFamily: {
-			sans: ['Fira Code', ...fontFamily.sans],
-		},
-		extend: {
+        fontFamily: {
+            display: ['Fraunces', ...fontFamily.serif],
+            sans: ['Inter', ...fontFamily.sans],
+            mono: ['"JetBrains Mono"', ...fontFamily.mono],
+        },
+        extend: {
             colors: {
                 theme: {
                     ...colors
@@ -25,46 +27,58 @@ module.exports = {
             typography: (theme) => ({
                 dark: {
                     css: {
-                        color: theme("colors.gray.200"),
+                        color: colors.dark.secondary,
                         blockquote: {
                             color: colors.dark.primary,
-                            borderColor: colors.primary
-                        },
-                        'blockquote > p::before, p::after': {
-                            color: colors.primary,
-                        },
-                    },
-                },
-                DEFAULT: {
-                    css: {
-                        a: {
-                            color: colors.dark.primary,
-                              '&:hover': {
-                                color: colors.primary,
-                              },
-                        },
-                        blockquote: {
-                            color: colors.primary,
-                            fontSize: theme("fontSize.2xl"),
                             borderColor: colors.dark.primary,
                         },
                         'blockquote > p::before, p::after': {
                             color: colors.dark.primary,
                         },
+                        a: {
+                            color: colors.dark.primary,
+                            '&:hover': {
+                                color: colors.dark.primary,
+                            },
+                        },
+                        h1: { color: colors.dark.secondary },
+                        h2: { color: colors.dark.secondary },
+                        h3: { color: colors.dark.secondary },
+                        strong: { color: colors.dark.secondary },
+                        code: { color: colors.accent['teal-dark'] },
+                    },
+                },
+                DEFAULT: {
+                    css: {
+                        a: {
+                            color: colors.primary,
+                            '&:hover': {
+                                color: colors.primary,
+                            },
+                        },
+                        blockquote: {
+                            color: colors.primary,
+                            fontSize: theme("fontSize.2xl"),
+                            borderColor: colors.primary,
+                        },
+                        'blockquote > p::before, p::after': {
+                            color: colors.primary,
+                        },
                         h1: {
-                            color: colors.dark.secondary,
+                            color: colors.secondary,
                         },
                         h2: {
-                            color: colors.dark.secondary,
+                            color: colors.secondary,
                         },
                         h3: {
-                            color: colors.dark.secondary,
+                            color: colors.secondary,
                         },
+                        code: { color: colors.accent.teal },
                     }
                 },
             }),
-		},
-	},
+        },
+    },
     variants: {
         extend: { typography: ["dark"] }
     },

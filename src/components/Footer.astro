@@ -3,11 +3,18 @@
 ---
 <footer class="footer">
     <nav class="nav">
-        <div>Copyright &copy; {new Date().getFullYear()} { SITE.name } | All rights reserved.</div>
+        <div class="footer__text">Copyright &copy; {new Date().getFullYear()} { SITE.name } | All rights reserved.</div>
     </nav>
 </footer>
 <style>
     .footer {
-        @apply py-6 border-t
+        @apply py-6 border-t;
+        border-color: var(--border);
+    }
+    .footer__text {
+        font-family: 'JetBrains Mono', ui-monospace, monospace;
+        font-size: 0.8rem;
+        letter-spacing: 0.02em;
+        color: var(--text-muted);
     }
 </style>

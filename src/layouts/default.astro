@@ -6,28 +6,32 @@ import MainLayout from '$/components/MainLayout.astro';
 const { content, showPageHeader = true } = Astro.props
 ---
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
     <head>
         <BaseHead title={ content.title ? `${ SITE.title } | ${content.title}` : SITE.title } description={ content.description } image={SITE.image}/>
     </head>
-    <MainLayout>
-        {showPageHeader &&
-            <div class="page__header">
-                <h1 class="page__title">{content.title}</h1>
-                <h5 class="page__desc">{content.description}</h5>
-            </div>
-        }
-        <slot />
-    </MainLayout>
+    <body>
+        <MainLayout>
+            {showPageHeader &&
+                <div class="page__header">
+                    <h1 class="page__title">{content.title}</h1>
+                    <h5 class="page__desc">{content.description}</h5>
+                </div>
+            }
+            <slot />
+        </MainLayout>
+    </body>
 </html>
 <style>
     .page__header {
         @apply py-4 mb-1
     }
     .page__title {
-        @apply text-5xl font-extrabold text-theme-primary dark:text-theme-dark-primary
+        @apply font-display text-5xl font-semibold;
+        color: var(--text);
     }
     .page__desc {
-        @apply text-gray-400
+        @apply font-sans;
+        color: var(--text-muted);
     }
 </style>

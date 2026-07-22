@@ -27,114 +27,137 @@ const AUTHOR_TWITTER = content.authorTwitter ? content.authorTwitter : SITE?.aut
 const AUTHOR_AVATAR = content.authorImage ? content.authorImage : SITE?.authorImage ? SITE?.authorImage : ""
 ---
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
     <head>
         <BaseHead {...content} title={ content.title ? `${ SITE.title } | ${content.title}` : SITE.title }/>
     </head>
-    <MainLayout>
-        <div class="post__header">
-            <div class="post__tags">
-                { content.tags.length > 0 && content.tags.map(tag => <a class="post__tag" href={`/tags/${tag}`} title={tag}>{tag}</a>) }
-            </div>
-            <h1 class="post__title">{ content.title }</h1>
-            <h5 class={`post__desc ${AUTHOR_AVATAR ? 'flex flex-row gap-2' : ''}`}>
-                { AUTHOR_AVATAR ? <img class="avatar" src={AUTHOR_AVATAR} alt={`${ AUTHOR_NAME }'s avatar`} /> : ''}
-                <div class={AUTHOR_AVATAR ? 'flex flex-col border-l-2 pl-2' : ''}>
-                    {
-                        AUTHOR_TWITTER ?
-                            <a class="post__author" href={`https://twitter.com/${AUTHOR_TWITTER}`} title={`${AUTHOR_NAME}'s twitter`} target="_blank" rel="external">{ AUTHOR_NAME }</a>
-                            :
-                            <span class="post__author">{ AUTHOR_NAME }</span>
-                    }
-                    {!AUTHOR_AVATAR ? ' | ' : ''}
-                    <span class="post__date">
-                        <!-- post creation/updation data -->
-                       { new Intl.DateTimeFormat('en-US', { dateStyle: 'full' }).format(new Date(content.pubDate))}
-                    </span>
-                    <span class="post__stats">
-                        { USE_VIEW_STATS && ` | `}
-                        { USE_VIEW_STATS && 
-                            <MdiIcon class="w-5 h-5 inline-block" name="eye" />
-                            <PostStats slug={meta?.slug} client:load /> 
-                        }
-                        <!-- | <Icon class="w-5 h-5 inline-block" pack="mdi" name="clock" /> 2 mins -->
-                    </span>
+    <body>
+        <MainLayout>
+            <div class="post__header">
+                <div class="post__tags">
+                    { content.tags.length > 0 && content.tags.map(tag => <a class="post__tag" href={`/tags/${tag}`} title={tag}>{tag}</a>) }
                 </div>
-            </h5>
-        </div>
-        {
-            content.image ?
-            USE_POST_IMG_OVERLAY ?
-                <div class="img__outer">
-                    <img src={content.image} alt={content.title} />
-                    <div class="img_gradient"></div>
-                </div><br/>
-                :
-                <img class="img__outer" src={content.image} alt={content.title} /><br/>
-                : ""
-        }
-        <Prose>
-            <slot />
-        </Prose>
-        <div class="post__footer">
-            { USE_AUTHOR_CARD &&
-                <br/>
-                <div class="author-card">
-                    { AUTHOR_AVATAR ? <img class="author-card__img avatar avatar--lg" src={AUTHOR_AVATAR} alt={`${ AUTHOR_NAME }'s avatar`} /> : ''}
-                    <div class="author-card__meta">
+                <h1 class="post__title">{ content.title }</h1>
+                <div class={`post__desc ${AUTHOR_AVATAR ? 'flex flex-row gap-2' : ''}`}>
+                    { AUTHOR_AVATAR ? <img class="avatar" src={AUTHOR_AVATAR} alt={`${ AUTHOR_NAME }'s avatar`} /> : ''}
+                    <div class={AUTHOR_AVATAR ? 'flex flex-col border-l-2 pl-2' : 'post__byline'}>
                         {
                             AUTHOR_TWITTER ?
-                                <a class="author-card__author" href={`https://twitter.com/${AUTHOR_TWITTER}`} title={`${AUTHOR_NAME}'s twitter`} target="_blank" rel="external">{ AUTHOR_NAME }</a>
+                                <a class="post__author" href={`https://twitter.com/${AUTHOR_TWITTER}`} title={`${AUTHOR_NAME}'s twitter`} target="_blank" rel="external">{ AUTHOR_NAME }</a>
                                 :
-                                <span class="author-card__author">{ AUTHOR_NAME }</span>
+                                <span class="post__author">{ AUTHOR_NAME }</span>
                         }
-                        <p class="author-card__bio">{ SITE.authorBio }</p>
-                        <br/>
-                        {
-                            USE_SUBSCRIPTION ?
-                            <form action="" class="subscription-form">
-                                <label for="email"></label>
-                                <input type="email" name="email" class="flex-grow border-0 text-theme-accent-gray-dark" required="true">
-                                <button type="submit">Subscribe</button>
-                            </form> :
-                            <a class="author-card__follow-btn button" target="_blank" href={`https://twitter.com/intent/follow?screen_name=${AUTHOR_TWITTER}`}><MdiIcon class="w-5 h-5 inline-block" name="twitter" /> Follow on Twitter</a>
-                        }
+                        <span class="post__byline-dot" aria-hidden="true">&middot;</span>
+                        <span class="post__date">
+                            <!-- post creation/updation data -->
+                           { new Intl.DateTimeFormat('en-US', { dateStyle: 'long' }).format(new Date(content.pubDate))}
+                        </span>
+                        <span class="post__stats">
+                            { USE_VIEW_STATS && 
+                                <MdiIcon class="w-4 h-4 inline-block" name="eye" />
+                                <PostStats slug={meta?.slug} client:load /> 
+                            }
+                        </span>
                     </div>
                 </div>
-                <br/>
-            }
+            </div>
             {
-                meta?.collection && meta?.id && 
-                    <EditUrl label=" Suggest changes on GitHub" editUrl={`${SITE.githubUrl}/singhhnitin.github.io/tree/main/src/content/${meta?.collection}/${meta?.id}`}/>
+                content.image ?
+                USE_POST_IMG_OVERLAY ?
+                    <div class="img__outer">
+                        <img src={content.image} alt={content.title} />
+                        <div class="img_gradient"></div>
+                    </div><br/>
+                    :
+                    <img class="img__outer" src={content.image} alt={content.title} /><br/>
+                    : ""
             }
-        </div>
-    </MainLayout>
+            <Prose>
+                <slot />
+            </Prose>
+            <div class="post__footer">
+                { USE_AUTHOR_CARD &&
+                    <br/>
+                    <div class="author-card">
+                        { AUTHOR_AVATAR ? <img class="author-card__img avatar avatar--lg" src={AUTHOR_AVATAR} alt={`${ AUTHOR_NAME }'s avatar`} /> : ''}
+                        <div class="author-card__meta">
+                            {
+                                AUTHOR_TWITTER ?
+                                    <a class="author-card__author" href={`https://twitter.com/${AUTHOR_TWITTER}`} title={`${AUTHOR_NAME}'s twitter`} target="_blank" rel="external">{ AUTHOR_NAME }</a>
+                                    :
+                                    <span class="author-card__author">{ AUTHOR_NAME }</span>
+                            }
+                            <p class="author-card__bio">{ SITE.authorBio }</p>
+                            <br/>
+                            {
+                                USE_SUBSCRIPTION ?
+                                <form action="" class="subscription-form">
+                                    <label for="email"></label>
+                                    <input type="email" name="email" class="flex-grow border-0 text-theme-accent-gray-dark" required="true">
+                                    <button type="submit">Subscribe</button>
+                                </form> :
+                                <a class="author-card__follow-btn button" target="_blank" href={`https://twitter.com/intent/follow?screen_name=${AUTHOR_TWITTER}`}><MdiIcon class="w-5 h-5 inline-block" name="twitter" /> Follow on Twitter</a>
+                            }
+                        </div>
+                    </div>
+                    <br/>
+                }
+                {
+                    meta?.collection && meta?.id && 
+                        <EditUrl label=" Suggest changes on GitHub" editUrl={`${SITE.githubUrl}/singhhnitin.github.io/tree/main/src/content/${meta?.collection}/${meta?.id}`}/>
+                }
+            </div>
+        </MainLayout>
+    </body>
 </html>
 <style>
     .post__header {
-        @apply py-4 mb-1 text-center md:text-left
+        @apply py-4 mb-2 text-center md:text-left border-b;
+        border-color: var(--border);
     }
     .post__title {
-        @apply text-5xl font-extrabold text-theme-primary dark:text-theme-dark-primary
+        @apply font-display text-4xl md:text-5xl font-semibold leading-tight mt-3 mb-4;
+        color: var(--text);
     }
     .post__desc {
-        @apply text-gray-500 dark:text-gray-100 flex justify-center text-left md:flex-none md:justify-start
+        @apply flex justify-center text-left md:flex-none md:justify-start
+    }
+    .post__byline {
+        @apply flex flex-wrap items-baseline gap-2 font-mono text-sm;
+        color: var(--text-muted);
     }
     .post__author {
-        @apply no-underline dark:text-white hover:text-theme-primary
+        @apply no-underline font-semibold;
+        color: var(--text);
+    }
+    .post__author:hover {
+        color: var(--accent);
+    }
+    .post__byline-dot {
+        color: var(--border);
     }
     .post__date,.post__stats {
-        @apply text-gray-400
+        font-family: inherit;
+        color: var(--text-muted);
     }
     .post__tags {
-        @apply inline-flex gap-2
+        @apply inline-flex gap-2 flex-wrap justify-center md:justify-start
     }
     .post__tag {
-        @apply text-gray-400 hover:text-theme-primary dark:hover:text-theme-dark-primary
+        @apply font-mono text-xs uppercase tracking-wide px-2.5 py-1 rounded-full border no-underline transition-colors;
+        color: var(--accent-2);
+        border-color: var(--border);
+        background: var(--bg-raised-2);
+    }
+    .post__tag:hover {
+        color: var(--bg);
+        background: var(--accent-2);
+        border-color: var(--accent-2);
     }
 
     .avatar {
-        @apply w-12 h-12 rounded-full object-cover p-1 border-2 border-solid border-theme-dark-primary dark:border-theme-primary
+        @apply w-12 h-12 rounded-full object-cover p-1 border-2 border-solid;
+        border-color: var(--accent);
     }
     .avatar--lg {
         @apply w-32 h-32
@@ -144,20 +167,24 @@ const AUTHOR_AVATAR = content.authorImage ? content.authorImage : SITE?.authorIm
         @apply relative rounded-lg shadow-xl overflow-hidden
     }
     .img_gradient {
-        @apply absolute z-10 w-full bottom-0 left-0 h-full bg-gradient-to-tr from-theme-primary dark:from-theme-dark-primary
+        @apply absolute z-10 w-full bottom-0 left-0 h-full;
+        background: linear-gradient(to top right, var(--accent), transparent);
     }
 
     .author-card {
-        @apply text-gray-500 dark:text-gray-100 flex flex-row gap-4 justify-start text-left
+        @apply flex flex-row gap-4 justify-start text-left;
+        color: var(--text-muted);
     }
     .author-card__meta {
-        @apply border-l pl-4
+        @apply border-l pl-4;
+        border-color: var(--border);
     }
     .author-card__author {
-        @apply text-2xl mb-1
+        @apply text-2xl mb-1 font-display;
+        color: var(--text);
     }
     .author-card__bio {
-        @apply text-gray-400
+        color: var(--text-muted);
     }
 
     .subscription-form {
@@ -167,9 +194,10 @@ const AUTHOR_AVATAR = content.authorImage ? content.authorImage : SITE?.authorIm
         @apply flex-grow border-0 text-theme-accent-gray-dark
     }
     .subscription-form button, .button {
-        @apply px-4 py-2 uppercase font-bold text-white bg-gradient-to-tr from-theme-primary to-theme-dark-secondary dark:from-theme-dark-secondary dark:to-theme-primary
+        @apply px-4 py-2 uppercase font-bold text-white rounded-md;
+        background: var(--accent);
     }
     .author-card__follow-btn {
-        @apply rounded-md shadow-md shadow-theme-dark-secondary dark:shadow-theme-primary hover:shadow-theme-secondary hover:dark:shadow-theme-secondary hover:shadow-lg transition-all
+        @apply rounded-md shadow-md hover:shadow-lg transition-all
     }
 </style>

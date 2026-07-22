@@ -22,9 +22,18 @@ const tags = [...new Set([].concat.apply([], allPosts.map(post => post.data.tags
 
 <style>
     .tag-list {
-        @apply list-none flex gap-2 flex-wrap
+        @apply list-none flex gap-2.5 flex-wrap
     }
     .tag {
-        @apply inline-block text-xl px-4 py-1 rounded-full text-theme-primary bg-theme-dark-primary dark:bg-theme-primary dark:text-theme-dark-primary hover:bg-theme-primary hover:text-theme-dark-primary dark:hover:bg-theme-dark-primary dark:hover:text-theme-primary
+        @apply inline-block text-sm px-4 py-1.5 rounded-full border no-underline transition-colors;
+        font-family: 'JetBrains Mono', ui-monospace, monospace;
+        color: var(--accent-2);
+        border-color: var(--border);
+        background: var(--bg-raised-2);
+    }
+    .tag:hover {
+        color: var(--bg);
+        background: var(--accent-2);
+        border-color: var(--accent-2);
     }
 </style>

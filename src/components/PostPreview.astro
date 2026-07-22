@@ -6,55 +6,112 @@ interface Props {
     asCard?: boolean
 }
 const { post: { data: post, slug }, asCard = false } = Astro.props
+const day = new Date(post.pubDate).getDate()
+const monthYear = `${getMonthName(post.pubDate)} ${new Date(post.pubDate).getFullYear()}`
 ---
-<div class={`post-preview ${asCard && 'post-preview--card'}`}>
-    <div class="post-preview__date-box">
-        <div class="post-preview__date">
-            <span class="post-preview__date__day">{ new Date(post.pubDate).getDate() }</span>
-            <span class="post-preview__date__month-n-year">{ `${getMonthName(post.pubDate)} ${new Date(post.pubDate).getFullYear()}` }</span>
-        </div>
-    </div>
-    <div class="flex-1">
-        <h4 class="post-preview__title dark:text-theme-dark-primary">
+{asCard ? (
+    <div class="entry-card">
+        <div class="entry-card__date">{day} {monthYear}</div>
+        <h4 class="entry-card__title">
             <a href={`/blog/${slug}`} title={post.title}>{post.title}</a>
         </h4>
-        <p class="post-preview__desc">
-            {post.description}
-        </p>
+        <p class="entry-card__desc">{post.description}</p>
     </div>
-</div>
+) : (
+    <div class="entry">
+        <div class="entry__date">
+            <span class="entry__day">{day}</span>
+            <span class="entry__month">{monthYear}</span>
+        </div>
+        <div class="entry__rail" aria-hidden="true">
+            <span class="entry__node"></span>
+            <span class="entry__line"></span>
+        </div>
+        <div class="entry__content">
+            <h4 class="entry__title">
+                <a href={`/blog/${slug}`} title={post.title}>{post.title}</a>
+            </h4>
+            <p class="entry__desc">
+                {post.description}
+            </p>
+        </div>
+    </div>
+)}
 <style>
-    .post-preview {
-        @apply flex gap-6;
+    /* Timeline entry — default, used for the research-log list */
+    .entry {
+        @apply flex gap-4 sm:gap-6;
     }
-    .post-preview--card {
-        @apply flex flex-col-reverse gap-4 sm:w-72 md:w-60 lg:w-64;
+    .entry__date {
+        @apply flex flex-col items-end shrink-0 text-right pt-0.5;
+        width: 4.75rem;
     }
-    .post-preview__date-box {
-        @apply sm:w-20 md:w-32
+    .entry__day {
+        @apply font-display text-3xl sm:text-4xl font-semibold leading-none;
+        color: var(--text);
     }
-    .post-preview--card .post-preview__date-box {
-        @apply w-full
+    .entry__month {
+        @apply mt-1 text-[0.7rem] uppercase tracking-wide;
+        font-family: 'JetBrains Mono', ui-monospace, monospace;
+        color: var(--text-muted);
     }
-    .post-preview__date {
-        @apply flex flex-col w-full text-center;
+    .entry__rail {
+        @apply flex flex-col items-center shrink-0;
+        width: 1rem;
     }
-    .post-preview--card .post-preview__date {
-        @apply text-left flex flex-row gap-1
+    .entry__node {
+        @apply block rounded-full shrink-0 mt-2;
+        width: 10px;
+        height: 10px;
+        background: var(--accent);
+        box-shadow: 0 0 0 4px var(--accent-soft);
     }
-    .post-preview__date__day {
-        @apply text-6xl font-semibold text-gray-500 dark:text-gray-300;
+    .entry__line {
+        @apply block flex-1 mt-2 mb-1;
+        width: 2px;
+        background: var(--border);
     }
-    .post-preview--card .post-preview__date__day {
-        @apply text-4xl
+    .entry__content {
+        @apply flex-1 min-w-0 pb-2;
     }
-    .post-preview__date__month-n-year {
-        @apply text-gray-400;
+    .entry__title {
+        @apply font-display text-xl sm:text-2xl font-semibold leading-snug mb-1.5;
     }
-    .post-preview__title {
-        @apply text-2xl font-semibold text-theme-primary dark:text-theme-dark-primary hover:underline mb-2;
+    .entry__title a {
+        color: var(--text);
+        text-decoration: none;
     }
-    .post-preview__desc {
-        @apply text-lg leading-6 line-clamp-2 dark:text-white hyphens-auto;
+    .entry__title a:hover {
+        color: var(--accent);
+    }
+    .entry__desc {
+        @apply text-base leading-6;
+        color: var(--text-muted);
+    }
+
+    /* Card fallback — currently unused (no page renders asCard), kept simple */
+    .entry-card {
+        @apply flex flex-col gap-2 p-5 rounded-xl border sm:w-72 md:w-60 lg:w-64;
+        background: var(--bg-panel);
+        border-color: var(--border);
+    }
+    .entry-card__date {
+        font-family: 'JetBrains Mono', ui-monospace, monospace;
+        font-size: 0.75rem;
+        color: var(--text-muted);
+    }
+    .entry-card__title {
+        @apply font-display text-xl font-semibold leading-snug;
+    }
+    .entry-card__title a {
+        color: var(--text);
+        text-decoration: none;
+    }
+    .entry-card__title a:hover {
+        color: var(--accent);
+    }
+    .entry-card__desc {
+        @apply text-sm leading-6 line-clamp-3;
+        color: var(--text-muted);
     }
 </style>
