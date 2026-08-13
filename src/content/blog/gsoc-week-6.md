@@ -2,6 +2,7 @@
 title: "GSoC Week 6: Fixing a Scoring Bias and Getting the Training Pipeline Running"
 description: "GSoC 2026 progress update."
 pubDate: 2026-07-07
+tags: []
 ---
 
 GSoC Week 6: Fixing a Scoring Bias, Resolving Coreference, and Getting the Training Pipeline Running

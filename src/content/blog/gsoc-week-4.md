@@ -2,6 +2,7 @@
 title: "GSoC Week 4: Embedding Model Evaluation and Building the Review Tool"
 description: "GSoC 2026 progress update."
 pubDate: 2026-06-23
+tags: []
 ---
 
 GSoC Week 4: Embedding Model Evaluation, Building the Review Tool, and Noisy Data Generation

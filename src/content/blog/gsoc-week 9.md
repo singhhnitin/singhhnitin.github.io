@@ -2,6 +2,7 @@
 title: "GSoC Week 9: Full-Scale Evaluation and Rebuilding the Review Tool"
 description: "GSoC 2026 progress update."
 pubDate: 2026-07-28
+tags: []
 ---
 
 GSoC Week 9: Full-Scale Evaluation, a Fairer Model Comparison, and Rebuilding the Review Tool

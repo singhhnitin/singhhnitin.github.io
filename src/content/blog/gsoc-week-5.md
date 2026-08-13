@@ -2,6 +2,7 @@
 title: "GSoC Week 5: Choosing an Embedding Model and Building BenchIE Ground Truth"
 description: "GSoC 2026 progress update."
 pubDate: 2026-06-30
+tags: []
 ---
 
 GSoC Week 5: Choosing an Embedding Model at Real Scale, and Building BenchIE's DBpedia Ground Truth

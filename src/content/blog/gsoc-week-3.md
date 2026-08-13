@@ -2,6 +2,7 @@
 title: "GSoC Week 3: A Full Dataset Audit and the Case for Fine-Tuning"
 description: "GSoC 2026 progress update."
 pubDate: 2026-06-16
+tags: []
 ---
 
 GSoC Week 3: A Full Dataset Audit and the Case for Fine-Tuning

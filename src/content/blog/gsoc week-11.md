@@ -2,6 +2,7 @@
 title: "GSoC Week 11: Establishing Real Baselines and Testing Beyond Hindi"
 description: "GSoC 2026 progress update."
 pubDate: 2026-08-11
+tags: []
 ---
 
 GSoC Week 11: Establishing Real Baselines and Testing Beyond Hindi

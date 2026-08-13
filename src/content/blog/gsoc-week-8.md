@@ -2,6 +2,7 @@
 title: "GSoC Week 8: Building a Predicate-Linking Gold Set"
 description: "GSoC 2026 progress update."
 pubDate: 2026-07-21
+tags: []
 ---
 
 GSoC Week 8: Building a Predicate-Linking Gold Set and Fine-Tuning the Normalization Model

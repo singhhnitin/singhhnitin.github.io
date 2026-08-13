@@ -2,6 +2,7 @@
 title: "GSoC Week 10: Being Precise About Evaluation"
 description: "GSoC 2026 progress update."
 pubDate: 2026-08-04
+tags: []
 ---
 
 GSoC Week 10: Being Precise About Evaluation, Testing Few-Shot Prompting, and Organizing the Codebase

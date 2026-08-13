@@ -2,6 +2,7 @@
 title: "GSoC Week 2: Researching How Much Data Fine-Tuning Actually Needs"
 description: "GSoC 2026 progress update."
 pubDate: 2026-06-09
+tags: []
 ---
 
 GSoC Week 2: Researching How Much Data Fine-Tuning Actually Needs
