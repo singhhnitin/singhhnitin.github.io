@@ -1,38 +1,38 @@
-@tailwind base;
+﻿@tailwind base;
 
-/* =========================================================
+/* ============================================================
    Design tokens
-   Ink & Marigold — a research-log palette grounded in the actual
+   Ink & Marigold â€” a research-log palette grounded in the actual
    subject of this blog: knowledge graphs and Hindi NLP. Deep ink
    canvas (light mode: warm paper), marigold for the primary
    accent (interactive elements only), teal for the secondary
    "graph/code" accent. Colors swap automatically with the .dark
-   class already toggled by ModeSwitcher — no dark: prefix needed
+   class already toggled by ModeSwitcher â€” no dark: prefix needed
    in component CSS, just var(--token).
-   ========================================================= */
+   ============================================================ */
 :root {
-    --bg: #faf8f4;
+    --bg: #faf7f0;
     --bg-panel: #ffffff;
-    --bg-raised-2: #f0ede5;
-    --text: #201e1a;
-    --text-muted: #6f6a60;
-    --border: #ddd8ca;
-    --accent: #5c7c99;
-    --accent-2: #8a6d4f;
-    --accent-soft: rgba(92, 124, 153, 0.10);
-    --shadow: 0 1px 2px rgba(20, 20, 18, 0.04), 0 8px 24px rgba(20, 20, 18, 0.05);
+    --bg-raised-2: #f1ece0;
+    --text: #1c1a16;
+    --text-muted: #6b6558;
+    --border: #e4ddcc;
+    --accent: #c8720a;
+    --accent-2: #0f8b8b;
+    --accent-soft: rgba(200, 114, 10, 0.12);
+    --shadow: 0 1px 2px rgba(28, 26, 22, 0.04), 0 8px 24px rgba(28, 26, 22, 0.06);
 }
 
 .dark {
-    --bg: #14161a;
-    --bg-panel: #1b1e23;
-    --bg-raised-2: #22262c;
-    --text: #e6e3dc;
-    --text-muted: #8b8780;
-    --border: #2c3036;
-    --accent: #7c9ab5;
-    --accent-2: #b08f6a;
-    --accent-soft: rgba(124, 154, 181, 0.14);
+    --bg: #0b0e13;
+    --bg-panel: #12161d;
+    --bg-raised-2: #171c24;
+    --text: #eae6da;
+    --text-muted: #928d7f;
+    --border: #262b34;
+    --accent: #eba53d;
+    --accent-2: #45d6c4;
+    --accent-soft: rgba(235, 165, 61, 0.14);
     --shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 12px 32px rgba(0, 0, 0, 0.35);
 }
 
@@ -173,17 +173,17 @@
     --astro-code-token-string: #7fd8a0;
 }
 
-/* =========================================================
+/* ============================================================
    Editorial rhythm for long-form posts. The point isn't more
    decoration, it's making a page of weekly research notes read
    like a written piece rather than a results printout: a lede
    that opens with a bit more weight, clear breathing room
    between sections, and tables that sit like a figure in an
-   article instead of a raw data export. The bar before each H2
-   deliberately echoes the accent used elsewhere on the site, so
-   a post's internal structure and the blog's outer structure
-   read as the same visual language.
-   ========================================================= */
+   article instead of a raw data export. The dot before each H2
+   deliberately reuses the same node marker from the blog-list
+   timeline, so a post's internal structure and the blog's outer
+   structure read as the same visual language.
+   ============================================================ */
 .prose {
     line-height: 1.75;
 }
@@ -201,10 +201,12 @@
     content: '';
     position: absolute;
     left: 0;
-    top: 0.6em;
-    width: 4px;
-    height: 1.1em;
+    top: 0.5em;
+    width: 8px;
+    height: 8px;
+    border-radius: 9999px;
     background: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-soft);
 }
 .prose h3 {
     margin-top: 2em;
