@@ -1,6 +1,6 @@
 ---
 title: "GSoC Week 7: Streamlining the Training Pipeline"
-description: "GSoC 2026 progress update."
+description: "Streamlining the training pipeline and a close, line-by-line look at what the model actually gets right and wrong."
 pubDate: 2026-07-14
 tags: []
 ---

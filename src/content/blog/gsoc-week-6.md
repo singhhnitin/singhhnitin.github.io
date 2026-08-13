@@ -1,6 +1,6 @@
 ---
 title: "GSoC Week 6: Fixing a Scoring Bias and Getting the Training Pipeline Running"
-description: "GSoC 2026 progress update."
+description: "Finding and fixing a scoring bias that was undervaluing real Wikipedia sentences, then getting the training pipeline running end to end."
 pubDate: 2026-07-07
 tags: []
 ---

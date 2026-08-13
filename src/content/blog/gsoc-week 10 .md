@@ -1,6 +1,6 @@
 ---
 title: "GSoC Week 10: Being Precise About Evaluation"
-description: "GSoC 2026 progress update."
+description: "Being precise about how every evaluation number is actually calculated, and testing whether few-shot prompting helps."
 pubDate: 2026-08-04
 tags: []
 ---

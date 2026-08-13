@@ -1,6 +1,6 @@
 ---
 title: "GSoC Week 11: Establishing Real Baselines and Testing Beyond Hindi"
-description: "GSoC 2026 progress update."
+description: "Establishing real baselines against an external tool and testing the pipeline on Gujarati and Rajasthani."
 pubDate: 2026-08-11
 tags: []
 ---

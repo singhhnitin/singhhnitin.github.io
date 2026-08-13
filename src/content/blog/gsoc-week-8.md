@@ -1,6 +1,6 @@
 ---
 title: "GSoC Week 8: Building a Predicate-Linking Gold Set"
-description: "GSoC 2026 progress update."
+description: "Building an 8,000-predicate gold set for DBpedia linking and running the full pipeline end to end for the first time."
 pubDate: 2026-07-21
 tags: []
 ---

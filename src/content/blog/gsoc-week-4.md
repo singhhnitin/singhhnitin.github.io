@@ -1,6 +1,6 @@
 ---
 title: "GSoC Week 4: Embedding Model Evaluation and Building the Review Tool"
-description: "GSoC 2026 progress update."
+description: "Comparing embedding models for ontology alignment and building the first version of the human review tool."
 pubDate: 2026-06-23
 tags: []
 ---

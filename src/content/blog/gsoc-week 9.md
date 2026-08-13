@@ -1,6 +1,6 @@
 ---
 title: "GSoC Week 9: Full-Scale Evaluation and Rebuilding the Review Tool"
-description: "GSoC 2026 progress update."
+description: "Full-scale evaluation across the entire dataset, plus rebuilding the human review tool around real pipeline data."
 pubDate: 2026-07-28
 tags: []
 ---

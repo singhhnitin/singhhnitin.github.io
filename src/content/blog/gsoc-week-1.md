@@ -1,6 +1,6 @@
 ---
 title: "GSoC Week 1: Establishing Baselines for Hindi Triple Extraction"
-description: "GSoC 2026 progress update."
+description: "Establishing baseline scores on Hindi-BenchIE and finding that predicate extraction, not entity extraction, is the real bottleneck."
 pubDate: 2026-06-02
 tags: []
 ---

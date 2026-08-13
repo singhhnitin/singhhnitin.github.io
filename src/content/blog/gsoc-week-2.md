@@ -1,6 +1,6 @@
 ---
 title: "GSoC Week 2: Researching How Much Data Fine-Tuning Actually Needs"
-description: "GSoC 2026 progress update."
+description: "Researching how much training data QLoRA fine-tuning actually needs for a narrow extraction task."
 pubDate: 2026-06-09
 tags: []
 ---

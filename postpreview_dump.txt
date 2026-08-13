@@ -1,12 +1,10 @@
----
+﻿---
 import type { CollectionEntry } from 'astro:content'
 import { getMonthName } from '$/utils'
-
 interface Props {
     post: CollectionEntry<'blog'>,
     asCard?: boolean
 }
-
 const { post: { data: post, slug }, asCard = false } = Astro.props
 const day = new Date(post.pubDate).getDate()
 const monthYear = `${getMonthName(post.pubDate)} ${new Date(post.pubDate).getFullYear()}`
@@ -21,24 +19,60 @@ const monthYear = `${getMonthName(post.pubDate)} ${new Date(post.pubDate).getFul
     </div>
 ) : (
     <div class="entry">
-        <div class="entry__date">{day} {monthYear}</div>
-        <h4 class="entry__title">
-            <a href={`/blog/${slug}`} title={post.title}>{post.title}</a>
-        </h4>
-        <p class="entry__desc">
-            {post.description}
-        </p>
+        <div class="entry__date">
+            <span class="entry__day">{day}</span>
+            <span class="entry__month">{monthYear}</span>
+        </div>
+        <div class="entry__rail" aria-hidden="true">
+            <span class="entry__node"></span>
+            <span class="entry__line"></span>
+        </div>
+        <div class="entry__content">
+            <h4 class="entry__title">
+                <a href={`/blog/${slug}`} title={post.title}>{post.title}</a>
+            </h4>
+            <p class="entry__desc">
+                {post.description}
+            </p>
+        </div>
     </div>
 )}
 <style>
+    /* Timeline entry â€” default, used for the research-log list */
     .entry {
-        @apply pb-6 mb-6 border-b;
-        border-color: var(--border);
+        @apply flex gap-4 sm:gap-6;
     }
     .entry__date {
-        @apply text-sm mb-1;
+        @apply flex flex-col items-end shrink-0 text-right pt-0.5;
+        width: 4.75rem;
+    }
+    .entry__day {
+        @apply font-display text-3xl sm:text-4xl font-semibold leading-none;
+        color: var(--text);
+    }
+    .entry__month {
+        @apply mt-1 text-[0.7rem] uppercase tracking-wide;
         font-family: 'JetBrains Mono', ui-monospace, monospace;
         color: var(--text-muted);
+    }
+    .entry__rail {
+        @apply flex flex-col items-center shrink-0;
+        width: 1rem;
+    }
+    .entry__node {
+        @apply block rounded-full shrink-0 mt-2;
+        width: 10px;
+        height: 10px;
+        background: var(--accent);
+        box-shadow: 0 0 0 4px var(--accent-soft);
+    }
+    .entry__line {
+        @apply block flex-1 mt-2 mb-1;
+        width: 2px;
+        background: var(--border);
+    }
+    .entry__content {
+        @apply flex-1 min-w-0 pb-2;
     }
     .entry__title {
         @apply font-display text-xl sm:text-2xl font-semibold leading-snug mb-1.5;
@@ -55,6 +89,7 @@ const monthYear = `${getMonthName(post.pubDate)} ${new Date(post.pubDate).getFul
         color: var(--text-muted);
     }
 
+    /* Card fallback â€” currently unused (no page renders asCard), kept simple */
     .entry-card {
         @apply flex flex-col gap-2 p-5 rounded-xl border sm:w-72 md:w-60 lg:w-64;
         background: var(--bg-panel);

@@ -1,6 +1,6 @@
 ---
 title: "GSoC Week 3: A Full Dataset Audit and the Case for Fine-Tuning"
-description: "GSoC 2026 progress update."
+description: "A full content audit of the 20K training set, plus building the first DBpedia ontology alignment layer."
 pubDate: 2026-06-16
 tags: []
 ---
