@@ -1,3 +1,9 @@
+---
+title: "GSoC Week 11: Establishing Real Baselines and Testing Beyond Hindi"
+description: "GSoC 2026 progress update."
+pubDate: 2026-08-11
+---
+
 GSoC Week 11: Establishing Real Baselines and Testing Beyond Hindi
 
 With the core pipeline trained, evaluated, and documented, this week closed out two items flagged as next steps at the end of last week: splitting every result into extraction-only and full-pipeline figures, and establishing genuine baselines to measure the fine-tuned model against. It also added something new — a direct test of how the pipeline behaves on languages it was never trained on.

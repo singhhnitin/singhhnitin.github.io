@@ -1,3 +1,9 @@
+---
+title: "GSoC Week 6: Fixing a Scoring Bias and Getting the Training Pipeline Running"
+description: "GSoC 2026 progress update."
+pubDate: 2026-07-07
+---
+
 GSoC Week 6: Fixing a Scoring Bias, Resolving Coreference, and Getting the Training Pipeline Running
 
 With real Wikipedia sentences scraped and annotated, this week was about turning that raw material into a genuinely trustworthy training and validation set — and getting the actual fine-tuning pipeline built, tested, and confirmed working end to end.

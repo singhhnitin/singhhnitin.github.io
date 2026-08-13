@@ -1,3 +1,9 @@
+---
+title: "GSoC Week 3: A Full Dataset Audit and the Case for Fine-Tuning"
+description: "GSoC 2026 progress update."
+pubDate: 2026-06-16
+---
+
 GSoC Week 3: A Full Dataset Audit and the Case for Fine-Tuning
 
 This week centered on four connected tasks: a complete content analysis of the existing 20,000-example synthetic dataset, building and fixing the ontology alignment layer, testing existing Indic language models to confirm the need for fine-tuning, and researching annotation tooling in depth.

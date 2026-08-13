@@ -1,3 +1,9 @@
+---
+title: "GSoC Week 4: Embedding Model Evaluation and Building the Review Tool"
+description: "GSoC 2026 progress update."
+pubDate: 2026-06-23
+---
+
 GSoC Week 4: Embedding Model Evaluation, Building the Review Tool, and Noisy Data Generation
 
 Four real threads came together this week: evaluating a newer embedding model as a potential upgrade, building the first version of the human review interface, generating a deliberately noisy training dataset for staged learning, and working out an honest compute cost estimate for the fine-tuning runs ahead.

@@ -1,3 +1,9 @@
+---
+title: "GSoC Week 10: Being Precise About Evaluation"
+description: "GSoC 2026 progress update."
+pubDate: 2026-08-04
+---
+
 GSoC Week 10: Being Precise About Evaluation, Testing Few-Shot Prompting, and Organizing the Codebase
 
 This week focused on transparency and rigor — documenting exactly how every evaluation number is produced, testing whether few-shot prompting could improve results, and making sure the whole project's code and documentation genuinely live in one organized, discoverable place.

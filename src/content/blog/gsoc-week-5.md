@@ -1,3 +1,9 @@
+---
+title: "GSoC Week 5: Choosing an Embedding Model and Building BenchIE Ground Truth"
+description: "GSoC 2026 progress update."
+pubDate: 2026-06-30
+---
+
 GSoC Week 5: Choosing an Embedding Model at Real Scale, and Building BenchIE's DBpedia Ground Truth
 
 This week moved from testing embedding models against a small curated property list to testing them against the real, full DBpedia ontology — and used that model to build something the project genuinely needed: a DBpedia property mapping for the BenchIE benchmark, which had none.

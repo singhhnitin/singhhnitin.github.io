@@ -1,3 +1,9 @@
+---
+title: "GSoC Week 8: Building a Predicate-Linking Gold Set"
+description: "GSoC 2026 progress update."
+pubDate: 2026-07-21
+---
+
 GSoC Week 8: Building a Predicate-Linking Gold Set and Fine-Tuning the Normalization Model
 
 This week's work connected two halves of the pipeline properly for the first time: building a real, substantial gold set for predicate-to-DBpedia-property linking, using it to fairly compare candidate models, fine-tuning the chosen model on it, and then running the complete extraction-plus-normalization pipeline together for a genuine end-to-end evaluation.

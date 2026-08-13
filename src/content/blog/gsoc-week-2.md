@@ -1,3 +1,9 @@
+---
+title: "GSoC Week 2: Researching How Much Data Fine-Tuning Actually Needs"
+description: "GSoC 2026 progress update."
+pubDate: 2026-06-09
+---
+
 GSoC Week 2: Researching How Much Data Fine-Tuning Actually Needs
 
 With honest baseline numbers in hand from Week 1, this week was about planning the path forward — specifically, understanding how much training data a fine-tuning approach would realistically need, and beginning to look at tooling for the human review step planned later in the project.

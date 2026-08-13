@@ -1,3 +1,9 @@
+---
+title: "GSoC Week 7: Streamlining the Training Pipeline"
+description: "GSoC 2026 progress update."
+pubDate: 2026-07-14
+---
+
 GSoC Week 7: Streamlining the Training Pipeline and a Close Qualitative Look at Real Outputs
 
 This week combined two things: making the training pipeline itself faster and more efficient, and taking a genuinely close, honest look at what the model was actually producing on real sentences — not just aggregate scores, but line-by-line comparison against the correct answer.

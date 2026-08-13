@@ -1,3 +1,9 @@
+---
+title: "GSoC Week 1: Establishing Baselines for Hindi Triple Extraction"
+description: "GSoC 2026 progress update."
+pubDate: 2026-06-02
+---
+
 GSoC Week 1: Establishing Baselines for Hindi Triple Extraction
 Where This Picks Up
 

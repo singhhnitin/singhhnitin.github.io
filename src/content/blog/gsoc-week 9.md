@@ -1,3 +1,9 @@
+---
+title: "GSoC Week 9: Full-Scale Evaluation and Rebuilding the Review Tool"
+description: "GSoC 2026 progress update."
+pubDate: 2026-07-28
+---
+
 GSoC Week 9: Full-Scale Evaluation, a Fairer Model Comparison, and Rebuilding the Review Tool
 
 This week was about moving from small-sample testing to genuine full-scale numbers, making sure every comparison along the way was measured fairly, and turning the human review tool from a demo into something connected to real pipeline data.
