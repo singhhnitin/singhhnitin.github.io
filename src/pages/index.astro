@@ -1,89 +1,38 @@
 ---
-export const prerender = true
-import { getCollection } from 'astro:content'
-import DefaultPageLayout from '$/layouts/default.astro'
-import PostPreviewList from '$/components/PostPreviewList.astro'
-import Prose from '$/components/Prose.astro'
-const title = 'Home'
-const description = 'GSoC 2026 contributor at DBpedia Hindi Chapter'
-const posts = await getCollection('blog')
+export const prerender = true;
+
+import { getCollection } from "astro:content";
+import DefaultPageLayout from "$/layouts/default.astro";
+import PostPreviewList from "$/components/PostPreviewList.astro";
+
+const title = "Home";
+const description = "GSoC 2026 contributor at DBpedia Hindi Chapter";
+
+const posts = await getCollection("blog");
 ---
+
 <DefaultPageLayout content={{ title, description }} showPageHeader={false}>
-    <div class="hero">
-        <div class="badges">
-            <div class="badge-card">
-                <img src="/gsoc.png" alt="Google Summer of Code" style="height:36px;width:auto;display:block;" />
-            </div>
-            <span class="badge-x">×</span>
-            <div class="badge-card">
-                <img src="/dbpedia.png" alt="DBpedia" style="height:36px;width:auto;display:block;" />
-            </div>
-        </div>
-        <div class="hero__says">
-            <Prose>
-                <h2>Hey, I'm Nitin 👋</h2>
-                <p>
-                    I'm a third year CS student from KIIT University, Bhubaneswar, currently contributing to 
-                    <strong>DBpedia</strong> as a <strong>GSoC 2026</strong> developer. 
-                    I write here about what I'm building, breaking, and learning along the way — 
-                    mostly Hindi NLP, knowledge graphs, and open source.
-                </p>
-                <p>
-                    This summer I'm working on fine-tuning small language models for Hindi relational 
-                    triple extraction and building a human-in-the-loop feedback interface for the 
-                    DBpedia Hindi Chapter.
-                </p>
-            </Prose>
-        </div>
-    </div>
-    <hr/>
-    <PostPreviewList posts={posts.slice(0, 3)} heading="recent posts"/>
-    <div class="page__actions">
-        <a class="action__go-to-blog ink-h" href="/blog" title="All Posts">All Posts &rarr;</a>
-    </div>
+  <h1>Hindi DBpedia Chapter</h1>
+
+  <p>
+    This page is dedicated to providing weekly updates on the project.
+  </p>
+
+  <p>
+    Read the blog posts or check <a href="/about">About</a> for more info.
+  </p>
+
+  <p>
+    Social Links:
+    <a href="https://github.com/singhhnitin">GitHub</a>
+    <a href="mailto:nitinsingh3323@gmail.com">Email</a>
+  </p>
+
+  <hr />
+
+  <PostPreviewList posts={posts.slice(0, 1)} heading="Featured" />
+
+  <hr />
+
+  <PostPreviewList posts={posts} heading="Recent Posts" />
 </DefaultPageLayout>
-<style>
-    .hero {
-        @apply flex flex-col gap-8 w-full transition-all pt-2 pb-6
-    }
-    .badges {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 14px;
-        justify-content: center;
-    }
-    .badge-card {
-        background: #ffffff;
-        padding: 8px 16px;
-        border-radius: 10px;
-        display: inline-flex;
-        align-items: center;
-        border: 1px solid var(--border);
-        box-shadow: var(--shadow);
-    }
-    .badge-x {
-        font-family: 'JetBrains Mono', ui-monospace, monospace;
-        font-size: 20px;
-        color: var(--text-muted);
-        font-weight: 400;
-    }
-    .hero__says {
-        @apply flex-1 text-center md:text-left
-    }
-    .page__actions {
-        @apply flex justify-center md:justify-end py-6
-    }
-    .action__go-to-blog {
-        @apply py-4 hover:underline;
-        color: var(--text-muted);
-    }
-    .action__go-to-blog:hover {
-        color: var(--accent);
-    }
-    @media (min-width: 768px) {
-        .badges {
-            justify-content: flex-start;
-        }
-    }
-</style>
