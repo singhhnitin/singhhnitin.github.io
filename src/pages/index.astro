@@ -34,5 +34,5 @@ const posts = await getCollection("blog");
 
   <hr />
 
-  <PostPreviewList posts={posts} heading="Recent Posts" />
+  <PostPreviewList posts={posts.slice(1)} heading="Recent Posts" />
 </DefaultPageLayout>
