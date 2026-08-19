@@ -19,8 +19,8 @@ export const NAV_ITEMS: NavItems = {
 };
 export const SITE = {
 	name: "Nitin Singh",
-	title: "Nitin Singh | GSoC 2026 Blog",
-	description: "GSoC 2026 contributor at DBpedia Hindi Chapter. Writing about NLP, Knowledge Graphs, and open source.",
+	title: "title: "GSoC'26 × DBpedia",",
+	description: "description: "GSoC 2026 Contributor at DBpedia Hindi Chapter.",",
 	url: "https://singhhnitin.github.io",
 	githubUrl: "https://github.com/singhhnitin",
 	listDrafts: false,
