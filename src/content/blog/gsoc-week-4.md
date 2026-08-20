@@ -1,22 +1,22 @@
 ---
-title: "Week-4 Embedding Model Evaluation and Building the Review Tool"
-description: "Fourth week of the coding period, evaluating a newer embedding model, building the review interface, and generating a noisy training dataset."
+title: "GSoC Week 4: Embedding Model Evaluation and Building the Review Tool"
+description: "Comparing embedding models for ontology alignment and building the first version of the human review tool."
 pubDate: 2026-06-23
 tags: []
 ---
 
-This is the fourth week (15-21st June) of the coding period of GSoC where the main aim was to evaluate a newer embedding model as a possible upgrade, build the first version of the human review tool, and generate a noisy training dataset for staged learning.
+This is the fourth week of the coding period of GSoC where the main aim was to evaluate a newer embedding model as a possible upgrade, build the first version of the human review tool, and generate a noisy training dataset for staged learning.
 
 ## Evaluating a Newer Embedding Model
 
-The ontology alignment layer runs on a multilingual MiniLM model. A newer, larger model was evaluated this week as a possible replacement, to check whether the extra scale would improve the alignment rate.
+The ontology alignment layer runs on the multilingual MiniLM model. KaLM-Embedding, a newer and larger model, was evaluated this week as a possible replacement, to check whether the extra scale would improve the alignment rate.
 
 | Model | Aligned (of 198 verified test triples) | Precision (manually checked) |
 |---|---|---|
-| Current model (baseline) | 35 (17.7%) | 100% |
-| Newer model (candidate) | 32 (16.2%) | ~69% |
+| MiniLM (baseline) | 35 (17.7%) | 100% |
+| KaLM-Embedding (candidate) | 32 (16.2%) | ~69% |
 
-The candidate model matched fewer triples and got more of them wrong. Each of four different attempts to make it work ran into a specific issue — naive usage matched broadly but inaccurately, threshold tuning brought the count down without fixing accuracy, its recommended usage mode made results worse, and a technical feature it needed conflicted with the rest of the software stack. The existing model was kept.
+KaLM-Embedding matched fewer triples and got more of them wrong. Each of four different attempts to make it work ran into a specific issue — naive usage matched broadly but inaccurately, threshold tuning brought the count down without fixing accuracy, its recommended usage mode made results worse, and a technical feature it needed conflicted with the rest of the software stack. MiniLM was kept.
 
 ## Building the First HITL Review Interface
 
@@ -45,6 +45,7 @@ To plan the fine-tuning runs, I worked out a GPU cost estimate: one clean traini
 |---|---|
 | One clean QLoRA run (A100-class GPU) | ~5 hours |
 | Total GPU-hours needed | 40 |
+| Estimated cost | ~₹4,438 |
 
 ---
 
