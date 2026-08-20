@@ -1,19 +1,35 @@
 ---
-title: "GSoC Week 1: Establishing Baselines for Hindi Triple Extraction"
-description: "Establishing baseline scores on Hindi-BenchIE and finding that predicate extraction, not entity extraction, is the real bottleneck."
+title: "Week-1 Understanding the Pipeline and Prior Work"
+description: "First week of the coding period, understanding the existing DBpedia Hindi Chapter pipeline and prior GSoC work."
 pubDate: 2026-06-02
 tags: []
 ---
 
-GSoC Week 1: Establishing Baselines for Hindi Triple Extraction
-Where This Picks Up
+# Week-1 Understanding the Pipeline and Prior Work
 
-The project builds on a strong foundation from previous years of work on the DBpedia Hindi Chapter. My first task was to establish honest, reproducible baseline numbers before writing any new model code — so that everything built afterward has something real to be measured against.
+This is the first week of the coding period of GSoC where the main aim was to understand the current DBpedia Hindi Chapter pipeline[^2] and the work done in the previous two GSoC editions.
 
-Baseline Evaluation on Hindi-BenchIE
+## The DBpedia Hindi Chapter Project
 
-The base cases were established through a full evaluation on the Hindi-BenchIE dataset (112 sentences), reusing the existing comparison tooling from prior work so the numbers stay directly comparable across years.
+The DBpedia Hindi Chapter project extracts structured facts from Hindi Wikipedia and builds them into a knowledge graph that others can query. The pipeline includes a rule-based extraction tool, IndIE, along with a set of DBpedia ontology mappings specific to Hindi.
 
-Key finding: argument span errors came out to 0% across every system tested — subjects and objects are being extracted correctly everywhere. The predicate is the sole failure mode in every case. This is a useful, clarifying result: it means the real challenge is relation identification, not entity boundary detection.
+This week, my primary focus was to go through the project's history from the previous two GSoC cycles, understand how the extraction pipeline works, and see where things currently stand. I went through both prior mentors' blogs from their own GSoC years — [Debarghya's 2024 blog](https://deba-iitbh.github.io/deba-gsoc24) and [Aditya's 2025 blog](https://advenk.github.io/av-blog) — to understand the project's progress week by week. My mentors provided guidance on where to start and what to focus on first.
 
-A new error type not covered in the original proposal was also identified during this pass: cases where a rule-based system's logic cannot determine a relation and outputs the literal placeholder string "property" instead. This accounted for a meaningful share of failures in the older rule-based system, and a much smaller share once an LLM completion step was added on top — a useful early signal that LLM-based completion genuinely helps close this gap, and a thread worth investigating further as the project continues.
+## Hindi-BenchIE and IndIE
+
+Hindi-BenchIE is the benchmark dataset used to evaluate Hindi information extraction systems, with 112 gold-annotated sentences. IndIE is the existing rule-based tool built for this task, using a chunking and dependency-tree based approach to extract triples.
+
+I ran a full evaluation on Hindi-BenchIE using the existing comparison tooling from prior work, so the numbers stay comparable across years. Subject and object extraction came out fully correct across the board, with every failure coming specifically from the relation. I also noticed the tool sometimes outputs the placeholder word "property" when it cannot determine a relation, which I kept a note of for later weeks.
+
+## Learnings from the Paper
+
+To build a proper understanding, I read the paper describing the project's work across both prior GSoC editions[^1]. It gave a detailed account of how the pipeline evolved, from the initial extraction framework work in 2024 to the language-model based extraction and predicate-linking work in 2025.
+
+In summary, the first week of my GSoC journey has been about understanding the existing pipeline and getting my own baseline numbers in place. With this foundation, I am ready to start on the specific tasks for the coming weeks.
+
+---
+
+Footnotes
+
+[^1]: Tiwari, Datta, Marada, Panchal, Ananya, Banerjee, Soru — "LLM-Assisted Multilingual Information Extraction for Knowledge Graph Population: The DBpedia Hindi Chapter," Text2KG Workshop, ESWC 2026. https://ceur-ws.org/Vol-4233/Text2KG_Paper_ID_18.pdf
+[^2]: https://github.com/dbpedia/neural-extraction-framework
