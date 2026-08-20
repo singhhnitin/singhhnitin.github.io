@@ -5,7 +5,7 @@ pubDate: 2026-07-07
 tags: []
 ---
 
-This is the sixth week (29th June-5th July) of the coding period of GSoC where the main aim was to turn the scraped and annotated Wikipedia sentences into a trustworthy training and validation set, and get the fine-tuning pipeline running end to end.
+This is the sixth week of the coding period of GSoC where the main aim was to turn the scraped and annotated Wikipedia sentences into a trustworthy training and validation set, and get the fine-tuning pipeline running end to end.
 
 ## Scoring Wikipedia Sentences
 
@@ -54,16 +54,13 @@ Before committing to a multi-day full run, a small smoke test (50 examples, 1 ep
 
 Real output from the smoke test, on a sentence about tweeters being found in home stereo systems: after only 50 training examples, the model already captured the general shape of the task correctly, with loss dropping steadily and token accuracy rising across all four test steps, no crashes.
 
-## Dataset Statistics and a Timing Estimate
+## Dataset Statistics
 
 | Metric | Value |
 |---|---|
 | Average token length | 327 |
 | Maximum token length | 1,087 |
 | Examples exceeding context window | 7 / 79,242 (0.01%) |
-| Estimated time per epoch | 2.5–3 days |
-| Estimated time per full learning-rate run | 8–9.5 days |
-| Estimated time for both planned runs | 16–19 days |
 
 ---
 
