@@ -5,8 +5,6 @@ pubDate: 2026-06-09
 tags: []
 ---
 
-# Week-2 Researching How Much Data Fine-Tuning Actually Needs
-
 This is the second week of the coding period of GSoC where the main aim was to figure out how much training data a fine-tuning approach would actually need, and start looking at tooling for the human review step planned later in the project.
 
 ## Data Requirements for Fine-Tuning
