@@ -5,7 +5,7 @@ pubDate: 2026-07-21
 tags: []
 ---
 
-This is the eighth week (13-19th July) of the coding period of GSoC where the main aim was to build a gold set for predicate-to-DBpedia-property linking, fine-tune the normalization model on it, and run the complete pipeline end to end for the first time.
+This is the eighth week of the coding period of GSoC where the main aim was to build a gold set for predicate-to-DBpedia-property linking, fine-tune the normalization model on it, and run the complete pipeline end to end for the first time.
 
 ## Building the Predicate-Linking Gold Set
 
