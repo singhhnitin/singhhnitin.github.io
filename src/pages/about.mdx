@@ -1,44 +1,252 @@
----
-title: "About"
-description: "About the DBpedia Hindi Chapter GSoC 2026 project."
-layout: "$/layouts/default.astro"
----
+@tailwind base;
 
-![GSoC x DBpedia](/images/uploads/Screenshot%202026-08-20%20172632.png)
+/* =========================================================
+   Design tokens
+   Ink & Marigold — a research-log palette grounded in the actual
+   subject of this blog: knowledge graphs and Hindi NLP. Deep ink
+   canvas (light mode: warm paper), marigold for the primary
+   accent (interactive elements only), teal for the secondary
+   "graph/code" accent. Colors swap automatically with the .dark
+   class already toggled by ModeSwitcher — no dark: prefix needed
+   in component CSS, just var(--token).
+   ========================================================= */
+:root {
+    --bg: #faf8f4;
+    --bg-panel: #ffffff;
+    --bg-raised-2: #f0ede5;
+    --text: #201e1a;
+    --text-muted: #6f6a60;
+    --border: #ddd8ca;
+    --accent: #5c7c99;
+    --accent-2: #8a6d4f;
+    --accent-soft: rgba(92, 124, 153, 0.10);
+    --shadow: 0 1px 2px rgba(20, 20, 18, 0.04), 0 8px 24px rgba(20, 20, 18, 0.05);
+}
 
-DBpedia is a collaborative initiative aimed at extracting structured information from Wikipedia and presenting it as Linked Open Data. While DBpedia has dedicated chapters for resource-rich languages like English and German, there is a noticeable gap in representation for low-resourced languages such as Hindi.
+.dark {
+    --bg: #14161a;
+    --bg-panel: #1b1e23;
+    --bg-raised-2: #22262c;
+    --text: #e6e3dc;
+    --text-muted: #8b8780;
+    --border: #2c3036;
+    --accent: #7c9ab5;
+    --accent-2: #b08f6a;
+    --accent-soft: rgba(124, 154, 181, 0.14);
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 12px 32px rgba(0, 0, 0, 0.35);
+}
 
-This project continues that work for the DBpedia Hindi Chapter, building a neural pipeline that extracts structured facts directly from Hindi Wikipedia sentences and links them to DBpedia's ontology. The system combines a fine-tuned language model for relation extraction, a predicate-linking model for matching extracted facts to DBpedia properties, and a human-in-the-loop review interface to ensure the final knowledge graph is trustworthy.
+@layer base {
+    html {
+        background: var(--bg);
+        overflow-x: hidden;
+    }
+    body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+        font-size: 17px;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+    }
+    img, video, svg, canvas {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Fraunces', ui-serif, Georgia, serif;
+        color: var(--text);
+    }
+    a {
+        color: var(--accent);
+        text-decoration-color: var(--accent-soft);
+    }
+    a:hover {
+        color: var(--accent-2);
+    }
+    hr {
+        border-color: var(--border);
+    }
+    table {
+        color: var(--text);
+        border-color: var(--border);
+    }
+    th {
+        color: var(--accent);
+        border-color: var(--border);
+        font-family: 'JetBrains Mono', ui-monospace, monospace;
+        font-size: 0.85em;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+    }
+    td {
+        border-color: var(--border);
+    }
+    strong {
+        color: var(--text);
+        font-weight: 600;
+    }
+    code {
+        font-family: 'JetBrains Mono', ui-monospace, monospace;
+        background-color: var(--bg-raised-2);
+        color: var(--accent-2);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 0.9em;
+    }
+    pre {
+        background-color: var(--bg-raised-2) !important;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+    }
+    pre code {
+        background: transparent;
+        padding: 0;
+        color: inherit;
+    }
+    blockquote {
+        border-left: 3px solid var(--accent);
+        padding-left: 1rem;
+        color: var(--text-muted);
+    }
+    /* Visible keyboard focus everywhere */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    [tabindex]:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+        border-radius: 2px;
+    }
+    ::selection {
+        background: var(--accent-soft);
+        color: var(--text);
+    }
+}
 
-**Contributor:** Nitin Singh
+@media (max-width: 640px) {
+    .prose {
+        font-size: 1.05rem;
+        line-height: 1.8;
+    }
+    .prose > p:first-of-type {
+        font-size: 1.15em;
+    }
+}
 
-**Mentors:** Sanju Tiwari, Debarghya Datta, Aditya Venkatesh, Ronak Panchal
+@tailwind components;
+@tailwind utilities;
 
-## Tech Stack
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+}
 
-**Extraction & Fine-Tuning**
-- Python
-- PyTorch
-- Transformers
-- QLoRA / PEFT
-- Gemma 3
-- F2LLM
+.ink-h {
+    @apply inline-block text-xs font-semibold uppercase py-4 tracking-[0.14em];
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    color: var(--text-muted);
+}
 
-**Human Review Interface**
-- Streamlit
-- GitHub API
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-raised-2);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 9999px;
+}
 
-**Ontology Alignment**
-- Sentence embeddings
-- DBpedia ontology (2,891 properties)
+.astro-code {
+    margin-top: 0;
+}
 
-## Topics
+.remark-code-title {
+    @apply inline-block relative top-4 px-2 pt-1 pb-5 text-sm rounded-t-md font-mono;
+    color: var(--accent);
+    background: var(--accent-soft);
+}
 
-- Semantic Web
-- Knowledge Graphs
-- Low-Resource Language
-- Natural Language Processing
+:root {
+    --astro-code-color-text: var(--text);
+    --astro-code-color-background: var(--bg-raised-2);
+    --astro-code-token-constant: var(--accent);
+    --astro-code-token-string: #4c9a6a;
+    --astro-code-token-comment: #8a8578;
+    --astro-code-token-keyword: var(--accent-2);
+    --astro-code-token-parameter: var(--text);
+    --astro-code-token-function: var(--accent);
+    --astro-code-token-string-expression: #4c9a6a;
+    --astro-code-token-punctuation: var(--text-muted);
+    --astro-code-token-link: var(--accent);
+}
+.dark {
+    --astro-code-token-string: #7fd8a0;
+}
 
----
-
-[Project on GitHub](https://github.com/dbpedia/neural-extraction-framework/) · [Email](mailto:nitinsingh3323@gmail.com)
+/* =========================================================
+   Editorial rhythm for long-form posts. The point isn't more
+   decoration, it's making a page of weekly research notes read
+   like a written piece rather than a results printout: a lede
+   that opens with a bit more weight, clear breathing room
+   between sections, and tables that sit like a figure in an
+   article instead of a raw data export. The bar before each H2
+   deliberately echoes the accent used elsewhere on the site, so
+   a post's internal structure and the blog's outer structure
+   read as the same visual language.
+   ========================================================= */
+.prose {
+    line-height: 1.75;
+}
+.prose > p:first-of-type {
+    font-size: 1.22em;
+    line-height: 1.7;
+    color: var(--text);
+}
+.prose h2 {
+    position: relative;
+    margin-top: 2.5em;
+    padding-left: 1.15em;
+}
+.prose h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 4px;
+    height: 1.1em;
+    background: var(--accent);
+}
+.prose h3 {
+    margin-top: 2em;
+}
+.prose table {
+    display: block;
+    overflow-x: auto;
+    width: 100%;
+    margin: 1.85em 0;
+    font-size: 0.92em;
+    border: 1px solid var(--border);
+    border-collapse: collapse;
+    -webkit-overflow-scrolling: touch;
+}
+.prose thead {
+    background: var(--bg-raised-2);
+}
+.prose tbody tr:nth-child(even) {
+    background: var(--bg-raised-2);
+}
+.prose td, .prose th {
+    padding: 0.65em 1em;
+}
+.prose hr {
+    margin: 2.5em 0;
+    opacity: 0.6;
+}
