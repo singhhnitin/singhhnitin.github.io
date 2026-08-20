@@ -1,33 +1,41 @@
 ---
-title: About
-layout: ../layouts/default.astro
+title: "About"
+description: "About the DBpedia Hindi Chapter GSoC 2026 project."
 ---
 
-## About the Project
+DBpedia is a collaborative initiative aimed at extracting structured information from Wikipedia and presenting it as Linked Open Data. While DBpedia has dedicated chapters for resource-rich languages like English and German, there is a noticeable gap in representation for low-resourced languages such as Hindi.
 
-This website documents my work as a Google Summer of Code 2026 contributor at the DBpedia Hindi Chapter.
+This project continues that work for the DBpedia Hindi Chapter, building a neural pipeline that extracts structured facts directly from Hindi Wikipedia sentences and links them to DBpedia's ontology. The system combines a fine-tuned language model for relation extraction, a predicate-linking model for matching extracted facts to DBpedia properties, and a human-in-the-loop review interface to ensure the final knowledge graph is trustworthy.
 
-The project focuses on Hindi relational triple extraction through fine-tuning small language models and developing a human-in-the-loop feedback interface.
+**Contributor:** Nitin Singh
 
-## Project Objectives
+**Mentors:** Sanju Tiwari, Debarghya Datta, Aditya Venkatesh, Ronak Panchal
 
-- Improve Hindi relational triple extraction.
-- Fine-tune lightweight language models.
-- Build a human-in-the-loop feedback workflow.
-- Convert reviewer corrections into training data.
-- Improve structured knowledge extraction for Hindi.
+## Tech Stack
 
-## Weekly Updates
+**Extraction & Fine-Tuning**
+- Python
+- PyTorch
+- Transformers
+- QLoRA / PEFT
+- Gemma 3
+- F2LLM
 
-This blog serves as a development journal where I publish weekly updates covering:
+**Human Review Interface**
+- Streamlit
+- GitHub API
 
-- Experiments
-- Model training
-- Evaluation results
-- Challenges
-- Research findings
-- Project progress
+**Ontology Alignment**
+- Sentence embeddings
+- DBpedia ontology (2,891 properties)
 
-## Contributor
+## Topics
 
-**Nitin Singh**
+- Semantic Web
+- Knowledge Graphs
+- Low-Resource Language
+- Natural Language Processing
+
+---
+
+[Project on GitHub](https://github.com/dbpedia/neural-extraction-framework/) · [Contact](nitinsingh3323@gmail.com)
