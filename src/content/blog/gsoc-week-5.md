@@ -1,6 +1,6 @@
 ---
-title: "Week-5 Choosing an Embedding Model and Building BenchIE Ground Truth"
-description: "Fifth week of the coding period, testing embedding models at full ontology scale and building DBpedia ground truth for BenchIE."
+title: "GSoC Week 5: Choosing an Embedding Model and Building BenchIE Ground Truth"
+description: "Testing embedding models at full ontology scale and building real DBpedia ground truth for BenchIE."
 pubDate: 2026-06-30
 tags: []
 ---
@@ -9,17 +9,17 @@ This is the fifth week of the coding period of GSoC where the main aim was to te
 
 ## Testing at Real Scale
 
-Earlier testing showed the existing embedding model performing well against a curated set of 73 properties with rich bilingual descriptions. Real DBpedia property labels are far sparser, often just a single English word with no Hindi anchor. This week I tested against the real ontology of 2,710 properties directly, rather than assuming the earlier result would carry over.
+Earlier testing showed MiniLM performing well against a curated set of 73 properties with rich bilingual descriptions. Real DBpedia property labels are far sparser, often just a single English word with no Hindi anchor. This week I tested against the real ontology of 2,710 properties directly, rather than assuming the earlier result would carry over.
 
 Using Recall@15 as the metric, three models were compared on 7 predicates with independently verified correct answers, against the full 2,710-property ontology:
 
 | Model | Recall@15 | Avg. rank of correct answer | Speed |
 |---|---|---|---|
-| Existing model (baseline) | 71.4% | 9.0 | ~1 second |
-| Candidate model A | 100% | 3.7 | ~2–3 seconds |
-| Candidate model B | 100% | 3.6 | ~51 seconds |
+| MiniLM (baseline) | 71.4% | 9.0 | ~1 second |
+| F2LLM-1.7B | 100% | 3.7 | ~2–3 seconds |
+| F2LLM-8B | 100% | 3.6 | ~51 seconds |
 
-Two candidates reached perfect recall, with the larger one only marginally improving average rank while taking roughly 20 times longer and needing double the storage. The faster of the two equally-accurate models was chosen going forward.
+F2LLM-1.7B and F2LLM-8B both reached perfect recall, with F2LLM-8B only marginally improving the average rank while taking roughly 20 times longer and needing double the storage. F2LLM-1.7B became the model used for the rest of the project's ontology alignment work — F2LLM-8B was later reused specifically for the one-time gold-set retrieval step in Week 8, where its slower speed mattered less.
 
 ## Building DBpedia Ground Truth for BenchIE
 
