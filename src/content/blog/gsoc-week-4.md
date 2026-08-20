@@ -5,8 +5,6 @@ pubDate: 2026-06-23
 tags: []
 ---
 
-# Week-4 Embedding Model Evaluation and Building the Review Tool
-
 This is the fourth week (15-21st June) of the coding period of GSoC where the main aim was to evaluate a newer embedding model as a possible upgrade, build the first version of the human review tool, and generate a noisy training dataset for staged learning.
 
 ## Evaluating a Newer Embedding Model
