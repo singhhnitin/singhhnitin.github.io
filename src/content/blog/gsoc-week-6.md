@@ -1,11 +1,11 @@
 ---
-title: "Week-6 Fixing a Scoring Bias and Getting the Training Pipeline Running"
-description: "Sixth week of the coding period, fixing a scoring bias, resolving coreference, and getting the training pipeline running end to end."
+title: "GSoC Week 6: Fixing a Scoring Bias and Getting the Training Pipeline Running"
+description: "Finding and fixing a scoring bias that was undervaluing real Wikipedia sentences, then getting the training pipeline running end to end."
 pubDate: 2026-07-07
 tags: []
 ---
 
-This is the sixth week of the coding period of GSoC where the main aim was to turn the scraped and annotated Wikipedia sentences into a trustworthy training and validation set, and get the fine-tuning pipeline running end to end.
+This is the sixth week (29th June-5th July) of the coding period of GSoC where the main aim was to turn the scraped and annotated Wikipedia sentences into a trustworthy training and validation set, and get the fine-tuning pipeline running end to end.
 
 ## Scoring Wikipedia Sentences
 
@@ -48,7 +48,7 @@ A real schema bug was found and fixed here — the combined training file mixed 
 
 ## Training Configuration and the Smoke Test
 
-Training settings are managed through Hydra configuration files, with every run logged to Weights & Biases. The base model is fine-tuned via 4-bit QLoRA, comparing two learning rates directly, with evaluation every quarter-epoch.
+Training settings are managed through Hydra configuration files, with every run logged to Weights & Biases. Gemma 3 4B is fine-tuned via 4-bit QLoRA, comparing two learning rates directly, with evaluation every quarter-epoch.
 
 Before committing to a multi-day full run, a small smoke test (50 examples, 1 epoch) confirmed the pipeline works end to end. A few real issues came up and were fixed along the way: the original environment was too old for the required library versions (fixed by building a fresh Python 3.10 environment), the same schema mismatch from dataset assembly needed handling here too, and the most significant one — a crash in the evaluation code tracing back to a known bug in the underlying library's generation function. The fix was writing a manual, step-by-step generation loop with proper caching, which also made progress visible instead of appearing to hang.
 
