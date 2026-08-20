@@ -5,8 +5,6 @@ pubDate: 2026-06-16
 tags: []
 ---
 
-# Week-3 Dataset Audit and Ontology Alignment
-
 This is the third week (8-14th June) of the coding period of GSoC where the main aim was to go through the existing training dataset in detail, build the ontology alignment layer, and test existing models to check whether fine-tuning is genuinely needed for this task.
 
 ## Dataset Content Analysis
