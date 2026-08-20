@@ -44,6 +44,7 @@
         background: var(--bg);
         color: var(--text);
         font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+        font-size: 17px;
         -webkit-font-smoothing: antialiased;
     }
     h1, h2, h3, h4, h5, h6 {
@@ -114,6 +115,16 @@
     ::selection {
         background: var(--accent-soft);
         color: var(--text);
+    }
+}
+
+@media (max-width: 640px) {
+    .prose {
+        font-size: 1.05rem;
+        line-height: 1.8;
+    }
+    .prose > p:first-of-type {
+        font-size: 1.15em;
     }
 }
 
