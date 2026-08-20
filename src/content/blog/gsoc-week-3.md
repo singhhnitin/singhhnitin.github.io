@@ -5,7 +5,7 @@ pubDate: 2026-06-16
 tags: []
 ---
 
-This is the third week (8-14th June) of the coding period of GSoC where the main aim was to go through the existing training dataset in detail, build the ontology alignment layer, and test existing models to check whether fine-tuning is genuinely needed for this task.
+This is the third week of the coding period of GSoC where the main aim was to go through the existing training dataset in detail, build the ontology alignment layer, and test existing models to check whether fine-tuning is genuinely needed for this task.
 
 ## Dataset Content Analysis
 
@@ -24,7 +24,7 @@ Out of 176,817 total triplets, close to four in five use a generic "property" re
 
 ## Ontology Alignment Layer
 
-I built a layer to map extracted Hindi relations to real DBpedia ontology properties, using a curated set of 73 properties with combined Hindi and English descriptions.
+I built a layer to map extracted Hindi relations to real DBpedia ontology properties, using the multilingual MiniLM embedding model against a curated set of 73 properties with combined Hindi and English descriptions.
 
 | Check | Result |
 |---|---|
