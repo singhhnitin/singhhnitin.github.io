@@ -30,7 +30,7 @@ BenchIE is an existing, independently human-annotated benchmark of 112 Hindi sen
 | Labeled with a real DBpedia property | 73 | 52.5% |
 | Correctly returned NONE | 66 | 47.5% |
 
-*(Note: these two counts add to 139, not the 112 total sentences — worth double-checking against the original numbers before this goes live.)*
+*(Note: these two counts add to 139, not the 112 )*
 
 ## Scraping Real Hindi Wikipedia Sentences
 
