@@ -41,12 +41,6 @@ Per the project's staged-training plan, a second, deliberately noisy dataset was
 
 To plan the fine-tuning runs, I worked out a GPU cost estimate: one clean training run's time, multiplied by 3 for multi-seed reproducibility, plus a buffer of 5 more run-equivalents for debugging — 8x the base run time in total.
 
-| Item | Value |
-|---|---|
-| One clean QLoRA run (A100-class GPU) | ~5 hours |
-| Total GPU-hours needed | 40 |
-| Estimated cost | ~₹4,438 |
-
 ---
 
 Footnotes
