@@ -5,8 +5,6 @@ pubDate: 2026-06-02
 tags: []
 ---
 
-# Week-1 Understanding the Pipeline and Prior Work
-
 This is the first week of the coding period of GSoC where the main aim was to understand the current DBpedia Hindi Chapter pipeline[^2] and the work done in the previous two GSoC editions.
 
 ## The DBpedia Hindi Chapter Project
