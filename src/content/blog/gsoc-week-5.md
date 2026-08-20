@@ -5,7 +5,7 @@ pubDate: 2026-06-30
 tags: []
 ---
 
-This is the fifth week (22-28th June) of the coding period of GSoC where the main aim was to test embedding models against the full DBpedia ontology, build a DBpedia property mapping for the BenchIE benchmark, and start scraping real Hindi Wikipedia sentences.
+This is the fifth week of the coding period of GSoC where the main aim was to test embedding models against the full DBpedia ontology, build a DBpedia property mapping for the BenchIE benchmark, and start scraping real Hindi Wikipedia sentences.
 
 ## Testing at Real Scale
 
