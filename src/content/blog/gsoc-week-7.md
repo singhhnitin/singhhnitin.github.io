@@ -1,30 +1,44 @@
 ---
-title: "GSoC Week 7: Streamlining the Training Pipeline"
-description: "Streamlining the training pipeline and a close, line-by-line look at what the model actually gets right and wrong."
+title: "Week-7 Streamlining the Training Pipeline"
+description: "Seventh week of the coding period, streamlining the training pipeline and reviewing real model output closely."
 pubDate: 2026-07-14
 tags: []
 ---
 
-GSoC Week 7: Streamlining the Training Pipeline and a Close Qualitative Look at Real Outputs
+This is the seventh week of the coding period of GSoC where the main aim was to make the training pipeline faster and more efficient, and take a close, line-by-line look at what the model was actually producing on real sentences.
 
-This week combined two things: making the training pipeline itself faster and more efficient, and taking a genuinely close, honest look at what the model was actually producing on real sentences — not just aggregate scores, but line-by-line comparison against the correct answer.
+## Streamlining the Dataset and Training Pipeline
 
-Streamlining the Dataset and Training Pipeline
+The training data was filtered down to "optimal"-trace examples only, removing the longer chain-of-thought traces that weren't the intended format for this stage.
 
-The training data was filtered down to "optimal"-trace examples only, removing the longer chain-of-thought traces that weren't the intended training format for this stage. This produced a cleaner set of 39,621 examples, and checking token length directly confirmed all of them comfortably fit under a much smaller context window than originally configured — allowing the block size to be reduced from 1024 to 512 tokens, a real efficiency gain with no downside once verified.
+| Change | Result |
+|---|---|
+| Filtered training set | 39,621 examples |
+| Block size | Reduced from 1024 to 512 tokens |
 
-The expensive generation-based evaluation that had been running every quarter-epoch was removed, since it was adding significant overhead for relatively little signal this early in training. In its place, a single baseline evaluation was added at step zero, giving a clean "before training" reference point without the ongoing cost. Automatic checkpoint-resume logic was also added to the training script, so an interrupted run can pick back up from its last saved point instead of restarting from scratch.
+Checking token length directly confirmed all examples comfortably fit under the smaller context window, so the reduction was a real efficiency gain with no downside.
 
-A Close Look at Real Model Output
+The expensive generation-based evaluation running every quarter-epoch was removed, replaced with a single baseline evaluation at step zero. Automatic checkpoint-resume logic was also added, so an interrupted run can pick back up instead of restarting from scratch.
 
-To really understand what the fine-tuned model (lr=2e-4 checkpoint) was doing, I ran it on 150 real sentences — 50 each from clean Wikipedia validation data, the external BenchIE benchmark, and the training data itself — and went through model predictions against the correct answer line by line, not just as an aggregate score.
+## A Close Look at Real Model Output
 
-A clear, consistent pattern emerged across nearly every example: the overwhelming majority of "failures" under strict exact-match scoring were not actually wrong in any meaningful sense — they were genuine, reasonable formatting and structural differences that preserved the correct underlying meaning. A few representative real cases:
+To understand what the fine-tuned model (lr=2e-4 checkpoint) was actually doing, I ran it on 150 real sentences — 50 each from Wikipedia validation data, the BenchIE benchmark, and the training data — and went through predictions against the correct answer line by line, not just as an aggregate score.
 
-One sentence about soldiers achieving success through regular military practice: both core relations were correctly identified, with only minor differences in exactly where a phrase's boundary was drawn — the real content was right.
-One sentence about chlorine being found in soil: the model's main line was a perfect exact match to the gold answer; the only difference was one additional, reasonable property-relation line the model added that gold didn't happen to include.
-One sentence naming three actors as the lead cast: gold split the three names into three separate triplet lines, while the model combined all three into a single subject in one line — arguably just as valid a way to represent the same fact, simply a different structural choice.
+A clear pattern showed up: most "failures" under strict exact-match scoring were reasonable structural differences, not actual errors. A few real examples:
 
-A smaller, genuinely useful minority of cases showed real content differences worth knowing about, rather than being smoothed over: a couple of examples showed the model outputting a literal "NONE" for an object where a real answer existed in the gold data — a genuine miss, not just a formatting difference. A few other examples showed subject and object roles reversed relative to gold, rather than simply restructured — a real content difference worth tracking as the project continues, not a phrasing choice.
+- One sentence about soldiers achieving success through regular military practice: both core relations correctly identified, only a minor difference in where a phrase boundary was drawn.
+- One sentence about chlorine being found in soil: the model's main line was a perfect exact match to gold; the only difference was one additional, reasonable property-relation line.
+- One sentence naming three actors: gold split the names into three separate lines, the model combined them into one — arguably an equally valid way to represent the same fact.
 
-Overall assessment: across all 15 closely-examined examples, every single one had valid, correctly-formatted output — confirming that an earlier generation-stopping fix was working exactly as intended — and while every one technically failed strict exact-match scoring, most of those "failures" reflect reasonable structural choices rather than actual errors. This distinction between formatting differences and genuine content errors is an important one to keep in mind when reading raw F1 numbers, and it's part of why later evaluation work moved toward LLM-as-judge scoring, which can tell the two apart the way a human reading the output naturally would.
+A smaller number of cases showed real content differences worth tracking honestly: a couple of examples had the model output "NONE" for an object where gold had a real answer, and a few showed subject and object roles genuinely reversed rather than just restructured.
+
+**Overall, across all 15 closely-examined examples, every one had valid, correctly-formatted output**, and while all of them technically failed strict exact-match scoring, most of those failures were structural choices rather than actual errors. This distinction is part of why later evaluation work moved toward LLM-as-judge scoring, which can tell formatting differences apart from genuine content errors.
+
+---
+
+Footnotes
+
+[^1]: Tiwari, Datta, Marada, Panchal, Ananya, Banerjee, Soru — "LLM-Assisted Multilingual Information Extraction for Knowledge Graph Population: The DBpedia Hindi Chapter," Text2KG Workshop, ESWC 2026. https://ceur-ws.org/Vol-4233/Text2KG_Paper_ID_18.pdf
+[^2]: https://github.com/dbpedia/neural-extraction-framework
+[^3]: https://deba-iitbh.github.io/deba-gsoc24
+[^4]: https://advenk.github.io/av-blog
