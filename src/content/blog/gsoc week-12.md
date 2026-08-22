@@ -47,3 +47,8 @@ Footnotes
 [^2]: https://github.com/dbpedia/neural-extraction-framework
 [^3]: https://deba-iitbh.github.io/deba-gsoc24
 [^4]: https://advenk.github.io/av-blog
+
+---
+
+**Final GSoC Summary:** [GitHub Gist](https://gist.github.com/singhhnitin/6afafd40bc847afc27d8f22d760a0f0e)
+**Development branch:** [singhhnitin/neural-extraction-framework — gsoc26h-development](https://github.com/singhhnitin/neural-extraction-framework/tree/gsoc26h-development)
